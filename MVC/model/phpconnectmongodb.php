@@ -1,7 +1,7 @@
 <?php
 //terminal:composer require mongodb/mongodb 
 // error use :composer update --ignore-platform-reqs
-require_once __DIR__ . "/vendor/autoload.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 // connect to MongoDB
 function Getmongodb($namedb, $namecollection)
