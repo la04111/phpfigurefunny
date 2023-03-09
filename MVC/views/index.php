@@ -1,13 +1,28 @@
 <!doctype html>
 <html class="no-js" lang="vi">
+<?php 
+// require_once('');
+//  $productControl = new productController();
+//  $result = $productControl->getAllProductIndex();
+//  foreach ($result as $document) {
+//     echo 'ProductID: ' . $document['ProductID'] . '<br>';
+//     echo 'ProductName: ' . $document['ProductName'] . '<br>';
+//     echo 'Series: ' . $document['Series'] . '<br>';
+//     echo 'Brand: ' . $document['Brand'] . '<br>';
+//     echo 'Note: ' . $document['Note'] . '<br>';
 
+//     echo 'DateRelease: ' . $document['DateRelease'] . '<br>';
+//     echo 'ProductStatus: ' . $document['ProductStatus'] . '<br><br>';
+// }
+?>
 <?php //Header page here --
 
 //use MongoDB\Operation\Find;
 
 include 'header.html';
+require_once '../controller/productController.php';
 
-require('../php_project/controller/productController.php');
+//require(__DIR__.'/../controller/productController.php');
 //require('../../phpconnectmongodb.php'); // X > view > user : ../ = view ; ../ X
 // $dbcollectionproduct  = Getmongodb("figurefunnyDB","product");
 // $result = $dbcollectionproduct->find([]);

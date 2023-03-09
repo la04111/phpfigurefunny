@@ -1,7 +1,8 @@
 <?php
-require_once('../model/productclass.php');
-require_once('../phpconnectmongodb.php');
-
+//require_once(__DIR__ . '/productclass.php');
+//require_once(__DIR__ . '/phpconnectmongodb.php');
+require_once('productclass.php');
+require_once('phpconnectmongodb.php');
 
 class productService{
   private  $dbcollectionproduct;
