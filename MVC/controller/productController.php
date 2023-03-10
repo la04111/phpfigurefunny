@@ -7,7 +7,7 @@
 // require_once(__DIR__.'/../../phpconnectmongodb.php');
 require_once('../model/productclass.php');
 require_once('../model/productService.php');
-//session_start();
+session_start();
 
 class productController
 {

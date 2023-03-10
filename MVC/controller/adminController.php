@@ -18,9 +18,9 @@ class adminController
     {
         include '../view_admin/product_create.php';
     }
-    public function CreateProductPOST(Product $p)
+    public function CreateProductPOST(Product $p,$listimg)
     {
-        if ($this->productService->addProduct($p)) {
+        if ($this->productService->addProduct($p,$listimg)) {
             include '../view_admin/index_admin.php';
         } else {
             echo "<script>alert('Lỗi thêm vui lòng xem lại thông tin !');</script>";
@@ -36,18 +36,34 @@ if (isset($_GET['controller'])) {
         $adminc->CreateProductGET();
     }
     if ($controller == "createProductPOST") {
-        if(!empty($_POST['ProductName']) ||!empty($_POST['ProductName']) )
-        $p = new Product();
-        $p->SetProductName($_POST['ProductName']) ;
+        if (
+            !empty($_POST['ProductName']) || !empty($_POST['Price']) ||
+            !empty($_POST['Series']) || !empty($_POST['Stock'])
+        ) {
+            $tempID = (int)$adminc->productService->getIdadd();
+            $p = new Product();
+            $p->SetProductID($tempID);
+            $p->SetProductName($_POST['ProductName']);
+            $p->SetSeries($_POST['Series']);
+            $p->SetBrand($_POST['Brand']);
+            $p->SetNote($_POST['Note']);
+            $p->SetDateRelease($_POST['DateRelease']);
+            $p->SetProductStatus($_POST['ProductStatus']);
+            $p->SetPrice((float)$_POST['Price']);
+            $p->SetStock((int)$_POST['Stock']);
+            $p->SetInfor($_POST['Infor']);
+            $adminc->CreateProductPOST($p,$_POST['geturlcloud']);
+        }
 
-        
-        $p->price = $_POST['Price'];
-        $p->series = $_POST['Series'];
-        $adminc->productService->getIdadd();
-        $value = $_POST['ProductName'];
-        $value2 = $_POST['Price'];
-        $value3 = $_POST['Series'];
-        echo $value;
+
+
+        // $p->price = $_POST['Price'];
+        // $p->series = $_POST['Series'];
+
+        // $value = $_POST['ProductName'];
+        // $value2 = $_POST['Price'];
+        // $value3 = $_POST['Series'];
+        // echo $value;
         //$adminc->CreateProductPOST($value);
     }
     // 
