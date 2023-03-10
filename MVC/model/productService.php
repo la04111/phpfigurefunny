@@ -36,7 +36,6 @@ class productService
     $result = $this->dbcollectionImage->find(['ProductID' => (int)$id]);
     //echo $result['Image'];
     return $result;
-   
   }
   public function findOneImageId($id)
   {
@@ -44,6 +43,42 @@ class productService
     if (!empty($result_image))
       return $result_image['Image'];
     else return "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+  }
+  // add one image
+  public function UpdateOneImage(Image $im)
+  {
+    try {
+     
+      // xu ly hinh anh nhieu tam
+      $this->dbcollectionImage->updateOne(['ProductID' => $im->GetProductID()],
+      ['$set' => ['IdSort' => $im->GetIDSort(),
+                   'Image' => $im->GetImage()
+                   ]]);
+
+      // insert the document in the collection
+      return true;
+    } catch (Exception $e) {
+      // handle the exception
+      return false;
+    }
+  }
+  //add list img
+  public function UpdateListImage($listimg)
+  {
+    try {
+     
+      // xu ly hinh anh nhieu tam
+      // $this->dbcollectionImage->updateOne(['ProductID' => $im->GetProductID()],
+      // ['$set' => ['IdSort' => $im->GetIDSort(),
+      //              'Image' => $im->GetImage()
+      //              ]]);
+
+      // insert the document in the collection
+      return true;
+    } catch (Exception $e) {
+      // handle the exception
+      return false;
+    }
   }
   // PRODUCT 
   public function getIdadd()
@@ -112,5 +147,4 @@ class productService
 
 
   }
-
 }

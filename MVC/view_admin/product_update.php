@@ -29,6 +29,9 @@
                         <!-- form start -->
                         <form method="post" action="/MVC/controller/adminController.php?controller=updateProductPOST">
                             <div class="card-body">
+                            <div class="form-group" style="display: none;">
+                                    <label for="exampleInputEmail1">id</label> <input type="text" class="form-control" id="ProductID" name="ProductID" value="<?php echo $result['ProductID']; ?>" placeholder="Nhập sản phẩm">
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label> <input type="text" class="form-control" id="ProductName" name="ProductName" value="<?php echo $result['ProductName']; ?>" placeholder="Nhập sản phẩm">
                                 </div>

@@ -3,7 +3,7 @@ class Image {
   
     private $ProductID;
     private $img;
-   
+   private $IDSort;
  
    
 
@@ -29,7 +29,15 @@ class Image {
       $this->img = strtoupper($img);
 
     }
-    
+    public function GetIDSort()
+    {
+        return $this->IDSort;
+    }
+    public function SetIDSort($IDSort)
+    {
+      $this->IDSort = strtoupper($IDSort);
+
+    }
 }
 
 ?>

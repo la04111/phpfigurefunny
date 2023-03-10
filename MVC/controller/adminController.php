@@ -87,7 +87,7 @@ if (isset($_GET['controller'])) {
     }
     if ($controller == "updateProductGET") {
         $id = $_GET['id'];
-        if(!empty($id)){
+        if (!empty($id)) {
             $result = $adminc->productService->findOneId($id);
             include '../view_admin/product_update.php';
         }
@@ -97,9 +97,9 @@ if (isset($_GET['controller'])) {
             !empty($_POST['ProductName']) || !empty($_POST['Price']) ||
             !empty($_POST['Series']) || !empty($_POST['Stock'])
         ) {
-            $tempID = (int)$adminc->productService->getIdadd();
+
             $p = new Product();
-            $p->SetProductID($tempID);
+            $p->SetProductID($_POST['ProductID']);
             $p->SetProductName($_POST['ProductName']);
             $p->SetSeries($_POST['Series']);
             $p->SetBrand($_POST['Brand']);
@@ -109,11 +109,45 @@ if (isset($_GET['controller'])) {
             $p->SetPrice((float)$_POST['Price']);
             $p->SetStock((int)$_POST['Stock']);
             $p->SetInfor($_POST['Infor']);
-            echo $_POST['Stock'];
-            echo $_POST['image1'];
-            echo $_POST['image2'];
-            echo $_POST['image3'];
-            echo $_POST['image4'];
+            if (!empty($_POST['geturlcloud'])) {
+                // call add new 
+            } else {
+                if (!empty($_POST['image1'])) {
+                    $imgs = new Image();
+                    $imgs->SetProductID($_POST['ProductID']);
+                    $imgs->SetIDSort("1");
+                    $imgs->SetImage($_POST['image1']);
+                    $adminc->productService->UpdateOneImage($imgs);
+                }
+                if (!empty($_POST['image2'])) {
+                    $imgs = new Image();
+                    $imgs->SetProductID($_POST['ProductID']);
+                    $imgs->SetIDSort("2");
+                    $imgs->SetImage($_POST['image2']);
+                    $adminc->productService->UpdateOneImage($imgs);
+                }
+                if (!empty($_POST['image3'])) {
+                    $imgs = new Image();
+                    $imgs->SetProductID($_POST['ProductID']);
+                    $imgs->SetIDSort("3");
+                    $imgs->SetImage($_POST['image3']);
+                    $adminc->productService->UpdateOneImage($imgs);
+                }
+                if(!empty($_POST['image4'])){
+                    $imgs = new Image();
+                    $imgs->SetProductID($_POST['ProductID']);
+                    $imgs->SetIDSort("4");
+                    $imgs->SetImage($_POST['image4']);
+                    $adminc->productService->UpdateOneImage($imgs);
+                    }
+            }
+
+
+            // echo $_POST['Stock'];
+            // echo $_POST['image1'];
+            // echo $_POST['image2'];
+            // echo $_POST['image3'];
+            // echo $_POST['geturlcloud'];
             //$adminc->CreateProductPOST($p, $_POST['geturlcloud']);
         }
     }
