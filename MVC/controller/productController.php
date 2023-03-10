@@ -26,8 +26,8 @@ class productController
         $result_productId = $this->productService->findOneId($id);
         include('../views/product_detail.php');
     }
-}
-$classproduct = new productController();
+} //test
+$classproduct = new productController(); 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 

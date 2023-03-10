@@ -25,6 +25,16 @@ public function getAllProduct(){
   //   echo 'ProductStatus: ' . $document['ProductStatus'] . '<br><br>';
   // }
 }
+public function getIdadd(){
+ 
+  $result =$this->dbcollectionproduct->find([]);
+  foreach($result as $document){
+      $id = $document['ProductID'];
+      
+  }
+  echo (int)$id+1;
+  return $result;
+}
 public function findOneName($name){
  
   $result =$this->dbcollectionproduct->findOne(["ProductName" => $name]);
@@ -39,7 +49,7 @@ public function findOneId($id){
 }
 public function addProduct(Product $p){
   
-    
+  try {
     $product = [
         'ProductID' => $p->GetProductID(),
         'ProductName' => $p->GetProductName() ,
@@ -51,13 +61,17 @@ public function addProduct(Product $p){
         'Price' => (double)$p->GetPrice(),
         'Stock' => (int)$p->GetStock(),
         'Image' => $p->GetImage(),
-        'Status' => $p->GetStatus(),
         'Infor' => $p->GetInfor()
         // xu ly hinh anh nhieu tam
     ];
     
     // insert the document in the collection
     $this->dbcollectionproduct->insertOne($product);
+    return true;
+  } catch (Exception $e) {
+    // handle the exception
+    return false;
+}
    // printf(" Success Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 }
 

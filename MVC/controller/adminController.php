@@ -1,68 +1,76 @@
 <?php
-
-
-// require_once(__DIR__ . '/../model/productclass.php');
-
-// require_once(__DIR__ . '/../model/productService.php');
-// require_once(__DIR__.'/../../phpconnectmongodb.php');
 require_once('../model/productclass.php');
 require_once('../model/productService.php');
-//session_start();
 
 class adminController
 {
-    private $productService;
+
+    public $productService;
     public function __construct()
     {
         $this->productService = new ProductService();
     }
-    public function getAllProductIndex()
+    public function LoadIndex()
     {
-        $result_List = $this->productService->getAllProduct();
-        include('../views/index.php');
+        include '../view_admin/index_admin.php';
     }
-    public function productDetailId($id)
+    public function CreateProductGET()
     {
-        $result_productId = $this->productService->findOneId($id);
-        include('../views/product_detail.php');
+        include '../view_admin/product_create.php';
+    }
+    public function CreateProductPOST(Product $p)
+    {
+        if ($this->productService->addProduct($p)) {
+            include '../view_admin/index_admin.php';
+        } else {
+            echo "<script>alert('Lỗi thêm vui lòng xem lại thông tin !');</script>";
+        }
     }
 }
-$classproduct = new adminController();
+$adminc = new adminController();
+
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
-
-    if ($controller == "productDetailId") {
-        $value = $_GET['value'];
-        $classproduct->productDetailId($value);
+    // Product GET - POST
+    if ($controller == "createProductGET") {
+        $adminc->CreateProductGET();
     }
-} else   $classproduct->getAllProductIndex();
+    if ($controller == "createProductPOST") {
+        if(!empty($_POST['ProductName']) ||!empty($_POST['ProductName']) )
+        $p = new Product();
+        $p->SetProductName($_POST['ProductName']) ;
 
+        
+        $p->price = $_POST['Price'];
+        $p->series = $_POST['Series'];
+        $adminc->productService->getIdadd();
+        $value = $_POST['ProductName'];
+        $value2 = $_POST['Price'];
+        $value3 = $_POST['Series'];
+        echo $value;
+        //$adminc->CreateProductPOST($value);
+    }
+    // 
+} else   $adminc->LoadIndex();
+?>
+<!-- class AdminModel {
+    public function loginUser($username, $password) {
+        // Perform login logic here...
+        // For example:
+        if ($username === 'admin' && $password === 'password') {
+            header('Location: http://localhost:3000/MVC/view/dashboard.php');
+            exit;
+        } else {
+            echo 'Invalid credentials!';
+        }
+    }
+}
+-->
 
-  
-
-// foreach ($result as $document) {
-//     echo 'ProductID: ' . $document['ProductID'] . '<br>';
-//     echo 'ProductName: ' . $document['ProductName'] . '<br>';
-//     echo 'Series: ' . $document['Series'] . '<br>';
-//     echo 'Brand: ' . $document['Brand'] . '<br>';
-//     echo 'Note: ' . $document['Note'] . '<br>';
-
-//     echo 'DateRelease: ' . $document['DateRelease'] . '<br>';
-//     echo 'ProductStatus: ' . $document['ProductStatus'] . '<br><br>';
-// }
-// $controller = new productController();
-// $controller->getAllProductIndex();
-
-// $productService = new productService();
-//   $products  =new Product();
-//   $products->SetProductID("33");
-//   $products->SetProductName("hí hí");
-//   $products->SetSeries("Honkai");
-//   $products->SetBrand("Hoyo");
-//   $products->SetDateRelease("2023");
-//   $products->SetProductStatus("Good");
-//   $products->SetPrice("3");
-//   $products->SetStock("100");
-//   $products->SetImage("3");
-//   $productService->addProduct($products);
-// <a href="http://localhost:3000/views/user/testPost.php?id=hehe">Post</a>
+<!-- <form action="http://localhost:3000/MVC/controller/adminController.php?controller=ha" method="post">
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username">
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password">
+  <button type="submit">Log in</button>
+</form> -->
