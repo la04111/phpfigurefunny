@@ -100,7 +100,7 @@
     <meta property="og:image:secure_url"
         content="https://theme.hstatic.net/200000588991/1000965463/14/share_fb_home.jpg?v=207" />
     <meta property="og:image:alt" content="Figure Funny" />
-    <meta property="og:url" content="https://http://localhost:3000/" />
+    <meta property="og:url" content="/MVC/controller/productController.php" />
     <meta property="og:site_name" content="Figure Funny" />
 
 
@@ -447,7 +447,7 @@
                         <div class="header-upper-logo">
                             <div class="header-logo wrap-logo" itemscope="" itemtype="http://schema.org/Organization">
 
-                                <a href="https://http://localhost:3000" itemprop="url">Figure Funny</a>
+                                <a href="/MVC/controller/productController.php" itemprop="url">Figure Funny</a>
 
                             </div>
                         </div>

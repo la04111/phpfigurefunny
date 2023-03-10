@@ -11,7 +11,7 @@ class Product {
     private $Price;
     private $Stock;
     private $Image;
-    private $Status;
+ 
     private $Infor;
 
     public function __construct()
@@ -108,15 +108,7 @@ class Product {
       $this->Image = strtoupper($Image);
 
     }
-    public function GetStatus()
-    {
-        return $this->Status;
-    }
-    public function SetStatus($Status)
-    {
-      $this->Status = strtoupper($Status);
 
-    }
     public function GetInfor()
     {
         return $this->Infor;
