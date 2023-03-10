@@ -27,7 +27,7 @@ class productController
         include('../views/product_detail.php');
     }
 }
-$classproduct = new productController();
+$classproduct = new productController(); 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 
