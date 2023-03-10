@@ -1,6 +1,6 @@
 <!doctype html>
-<html class="no-js" lang="vi">
-<?php 
+<html lang="vi">
+<?php
 // require_once('');
 //  $productControl = new productController();
 //  $result = $productControl->getAllProductIndex();
@@ -19,8 +19,8 @@
 
 //use MongoDB\Operation\Find;
 
-include 'header.html';
-require_once '../controller/productController.php';
+include 'header.php';
+//require_once '../controller/productController.php';
 
 //require(__DIR__.'/../controller/productController.php');
 //require('../../phpconnectmongodb.php'); // X > view > user : ../ = view ; ../ X
@@ -91,107 +91,67 @@ require_once '../controller/productController.php';
                     <div class="row">
                         <div class="clearfix content-product-list">
 
-                            <div class="col-md-4 col-sm-6 col-xs-6 pro-loop ">
-                                <div class="product-block product-resize" id="section_one_loop_9">
-                                    <div class="product-img">
-                                        <div class="product-order">Pre-order</div>
+                            <!-- Pre-Order here -->
 
-                                        <a href="/products/mo-hinh-scale-statue-yae-miko-genshin" title="Mô hình Scale Statue Yae Miko 18+ Genshin" class="image-resize ratiobox">
-                                            <picture>
-                                                <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <img class="lazyload img-loop" data-sizes="auto" data-src="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" data-lowsrc="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " />
-                                            </picture>
-                                            <picture>
-                                                <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <img class="img-loop img-hover lazyload" data-src="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " />
-                                            </picture>
-                                        </a>
-                                        <div class="button-add hidden">
-                                            <button type="submit" title="Buy now" class="action" onclick="buy_now('1098073325')">Mua ngay<i class="fa fa-long-arrow-right"></i></button>
-                                        </div>
-                                        <div class="pro-price-mb">
-                                            <span class="pro-price">800,000₫</span>
+                            <?php
 
-                                        </div>
-                                    </div>
-                                    <div class="product-detail clearfix">
-                                        <div class="box-pro-detail">
-                                            <h3 class="pro-name">
-                                                <a href="/products/mo-hinh-scale-statue-yae-miko-genshin" title="Mô hình Scale Statue Yae Miko 18+ Genshin">
-                                                    Mô hình Scale Statue Yae Miko 18+ Genshin
-                                                </a>
-                                            </h3>
-                                            <div class="box-pro-prices">
-                                                <p class="pro-price ">
-                                                    <span>800,000₫</span>
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-6 pro-loop ">
-                                <div class="product-block product-resize" id="section_one_loop_10">
-                                    <div class="product-img">
-
-                                        <a href="/products/1717-nendoroid-aether-genshin" title="Nendoroid 1717 Aether Genshin" class="image-resize ratiobox">
-                                            <picture>
-                                                <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/0fbb79d0-7e98-49c3-9121-ee47237796b9_444ce0907d94422ebb806492888690c3_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/0fbb79d0-7e98-49c3-9121-ee47237796b9_444ce0907d94422ebb806492888690c3_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/0fbb79d0-7e98-49c3-9121-ee47237796b9_444ce0907d94422ebb806492888690c3_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" />
-                                                <img class="lazyload img-loop" data-sizes="auto" data-src="//product.hstatic.net/200000588991/product/0fbb79d0-7e98-49c3-9121-ee47237796b9_444ce0907d94422ebb806492888690c3_grande.jpeg" data-lowsrc="//product.hstatic.net/200000588991/product/0fbb79d0-7e98-49c3-9121-ee47237796b9_444ce0907d94422ebb806492888690c3_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Nendoroid 1717 Aether Genshin " />
-                                            </picture>
-                                            <picture>
-                                                <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/9d6126c7-08f1-40df-acd5-a2bab2ee53c8_01d23c796bea459e83afa1c3f13380cd_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/9d6126c7-08f1-40df-acd5-a2bab2ee53c8_01d23c796bea459e83afa1c3f13380cd_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/9d6126c7-08f1-40df-acd5-a2bab2ee53c8_01d23c796bea459e83afa1c3f13380cd_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
-                                                <img class="img-loop img-hover lazyload" data-src="//product.hstatic.net/200000588991/product/9d6126c7-08f1-40df-acd5-a2bab2ee53c8_01d23c796bea459e83afa1c3f13380cd_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Nendoroid 1717 Aether Genshin " />
-                                            </picture>
-                                        </a>
-                                        <div class="button-add hidden">
-                                            <button type="submit" title="Buy now" class="action" onclick="buy_now('1095191669')">Mua ngay<i class="fa fa-long-arrow-right"></i></button>
-                                        </div>
-                                        <div class="pro-price-mb">
-                                            <span class="pro-price">1,330,000₫</span>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-detail clearfix">
-                                        <div class="box-pro-detail">
-                                            <h3 class="pro-name">
-                                                <a href="/products/1717-nendoroid-aether-genshin" title="Nendoroid 1717 Aether Genshin">
-                                                    Nendoroid 1717 Aether Genshin
-                                                </a>
-                                            </h3>
-                                            <div class="box-pro-prices">
-                                                <p class="pro-price ">
-                                                    <span>1,330,000₫</span>
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                            foreach ($result_List as $document) {
+                                echo ' <div class="col-md-4 col-sm-6 col-xs-6 pro-loop "> ';
+                                echo ' <div class="product-block product-resize" id="section_one_loop_' . $document['ProductID'] . '"> ';
+                                echo '                   <div class="product-img">';
+                                if ($document['Status'] == 'Order') {
+                                    echo '            <div class="product-order">Pre-order</div>';
+                                }
+                                echo '           <a href="http://localhost:3000/MVC/controller/productController.php?controller=productDetailId&value='.$document['ProductID'].'" title="' . $document['ProductName'] . '" class="image-resize ratiobox">';
+                                echo '               <picture>';
+                                // echo '                  <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
+                                // echo '                   <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
+                                //  echo '                  <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
+                                //echo '                  <img class="lazyload img-loop" data-sizes="auto" data-src="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" data-lowsrc="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " /> ';
+                                echo '             </picture> ';
+                                echo '             <picture> ';
+                                // echo '                  <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
+                                //echo '                  <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
+                                // echo '                   <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
+                                //echo '                   <img class="img-loop img-hover lazyload" data-src="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " /> ';
+                                echo '                </picture> ';
+                                echo '           </a> ';
+                                echo '          <div class="button-add hidden"> ';
+                                echo '              <button type="submit" title="Buy now" class="action">Mua ngay<i class="fa fa-long-arrow-right"></i></button> ';
+                                echo '           </div> ';
+                                echo '          <div class="pro-price-mb"> ';
+                                echo '               <span class="pro-price">' . $document['Price'] . 'đ</span> ';
+                                echo '           </div> ';
+                                echo '       </div> ';
+                                echo '       <div class="product-detail clearfix"> ';
+                                echo '           <div class="box-pro-detail"> ';
+                                echo '              <h3 class="pro-name"> ';
+                                echo '                  <a href="http://localhost:3000/MVC/controller/productController.php?controller=productDetailId&value='.$document['ProductID'].'" title="' . $document['ProductName'] . '"> ';
+                                echo '                      ' . $document['ProductName'] . ' ';
+                                echo '                 </a> ';
+                                echo '              </h3> ';
+                                echo '              <div class="box-pro-prices"> ';
+                                echo '                  <p class="pro-price "> ';
+                                echo '                       <span>' . $document['Price'] . '₫</span> ';
+                                echo '                  </p> ';
+                                echo '              </div> ';
+                                echo '           </div> ';
+                                echo '      </div> ';
+                                echo '  </div> ';
+                                echo ' </div> ';
+                            }
+                            ?>
+                            <!-- End Pre -->
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
     </main>
     <footer>
         <?php //fotter page here --
-        include 'footer.html';
+        include 'footer.php';
         ?>
     </footer>
     <div class="addThis_listSharing ">
@@ -248,7 +208,7 @@ require_once '../controller/productController.php';
     </div>
 
     <?php //js page here --
-    include 'sctript_indexjs.html';
+    include 'sctript_indexjs.php';
     ?>
 </body>
 

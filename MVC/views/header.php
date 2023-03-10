@@ -1,7 +1,10 @@
 
     <meta name="google-site-verification" content="ojaw6mTnNjz3mOP8aCG4dPxVYGGLIqicpR2SFbeCHSQ" />
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="a.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./a.css"> -->
+    <style>
+    <?php include('a.css')?>
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="revisit-after" content="1 day" />

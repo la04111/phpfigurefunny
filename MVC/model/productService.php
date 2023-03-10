@@ -27,13 +27,15 @@ public function getAllProduct(){
 }
 public function findOneName($name){
  
-  $result =$this->dbcollectionproduct->findOne(["ProductName" , $name]);
+  $result =$this->dbcollectionproduct->findOne(["ProductName" => $name]);
   return $result;
 }
 public function findOneId($id){
   
-  $result =$this->dbcollectionproduct->findOne(["ProductID" , $id]);
+  $result =$this->dbcollectionproduct->findOne(["ProductID" => (int)$id]);
   return $result;
+
+
 }
 public function addProduct(Product $p){
   
@@ -49,7 +51,8 @@ public function addProduct(Product $p){
         'Price' => (double)$p->GetPrice(),
         'Stock' => (int)$p->GetStock(),
         'Image' => $p->GetImage(),
-        'Status' => $p->GetStatus()
+        'Status' => $p->GetStatus(),
+        'Infor' => $p->GetInfor()
         // xu ly hinh anh nhieu tam
     ];
     

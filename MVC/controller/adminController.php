@@ -9,7 +9,7 @@ require_once('../model/productclass.php');
 require_once('../model/productService.php');
 //session_start();
 
-class productController
+class adminController
 {
     private $productService;
     public function __construct()
@@ -27,7 +27,7 @@ class productController
         include('../views/product_detail.php');
     }
 }
-$classproduct = new productController();
+$classproduct = new adminController();
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 
