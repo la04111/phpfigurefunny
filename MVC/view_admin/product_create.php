@@ -80,7 +80,7 @@
 							<!-- /.card-body -->
 
 							<div class="card-footer">
-								<button type="submit" class="btn btn-primary" disabled>Thêm sản phẩm</button>
+								<button type="submit" id="myButton" class="btn btn-primary" disabled>Thêm sản phẩm</button>
 							</div>
 						</form>
 					</div>

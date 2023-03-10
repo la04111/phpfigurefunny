@@ -30,6 +30,22 @@ class productService
     //   echo 'ProductStatus: ' . $document['ProductStatus'] . '<br><br>';
     // }
   }
+  // IMAGE  GET
+  public function getImagewithID($id)
+  {
+    $result = $this->dbcollectionImage->find(['ProductID' => (int)$id]);
+    //echo $result['Image'];
+    return $result;
+   
+  }
+  public function findOneImageId($id)
+  {
+    $result_image = $this->dbcollectionImage->findOne(["ProductID" => (int)$id]);
+    if (!empty($result_image))
+      return $result_image['Image'];
+    else return "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+  }
+  // PRODUCT 
   public function getIdadd()
   {
 
@@ -39,24 +55,26 @@ class productService
     }
     return (int)$id + 1;
   }
-  public function findOneName($name)
+  public function findName($name)
   {
 
-    $result = $this->dbcollectionproduct->findOne(["ProductName" => $name]);
-    return $result;
+    $result_name = $this->dbcollectionproduct->find([
+      "ProductName" => ['$regex' => $name]
+    ]);
+    return $result_name;
   }
   public function findOneId($id)
   {
-
     $result = $this->dbcollectionproduct->findOne(["ProductID" => (int)$id]);
     return $result;
   }
+
   public function addProduct(Product $p, $list_image)
   {
 
     try {
       $product = [
-        'ProductID' => $p->GetProductID(),
+        'ProductID' => (int)$p->GetProductID(),
         'ProductName' => $p->GetProductName(),
         'Series' => $p->GetSeries(),
         'Brand' => $p->GetBrand(),
@@ -75,7 +93,7 @@ class productService
       foreach ($imgall as $img) {
         if (!empty($img)) {
           $addimg = [
-            'ProductID' => $p->GetProductID(),
+            'ProductID' => (int)$p->GetProductID(),
             'IdSort' => (int)$i,
             'Image' => $img
           ];
@@ -91,5 +109,8 @@ class productService
       return false;
     }
     // printf(" Success Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
+
+
   }
+
 }
