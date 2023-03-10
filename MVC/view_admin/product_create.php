@@ -80,7 +80,7 @@
 							<!-- /.card-body -->
 
 							<div class="card-footer">
-								<button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+								<button type="submit" id="myButton" class="btn btn-primary" disabled>Thêm sản phẩm</button>
 							</div>
 						</form>
 					</div>
@@ -144,7 +144,10 @@
 							document.getElementById('image3').src = url;
 							
 						}
+						const myButton = document.getElementById("myButton");
 
+// Enable the button
+myButton.removeAttribute("disabled");
 						//if (i == length - 1) {
 						//    document.getElementById("myForm").submit();
 						//}

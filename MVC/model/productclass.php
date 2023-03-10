@@ -10,7 +10,7 @@ class Product {
     private $ProductStatus;
     private $Price;
     private $Stock;
-    private $Image;
+   
  
     private $Infor;
 
@@ -99,15 +99,7 @@ class Product {
       $this->Stock = strtoupper($Stock);
 
     }
-    public function GetImage()
-    {
-        return $this->Image;
-    }
-    public function SetImage($Image)
-    {
-      $this->Image = strtoupper($Image);
-
-    }
+  
 
     public function GetInfor()
     {
