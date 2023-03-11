@@ -18,7 +18,9 @@ include 'header.php';
                     echo ' <div class="product-gallery__thumb"> ';
                    // echo ' <a class="product-gallery__thumb-placeholder" rel="nofollow" href="javascript:" data-image="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_master.png" data-zoom-image="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_master.png"> ';
                 //img
-                    echo ' <img alt=" Mô hình Kiana Kaslana [Herrscher of Flamecion] ver. 1/7 Scale Figure Honkai Impact 3 " data-image="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_master.png" src="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_compact.png"> ';
+                $callproductService = new productService();
+
+                    echo ' <img alt=" '.$result_productId["ProductName"] .' " data-image="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_master.png" src="//product.hstatic.net/200000588991/product/hinh_anh_2023-03-06_121749972_6bddf81215da4af1bc1c35776e60c75a_compact.png"> ';
                     echo ' </a> ';
                     echo ' </div> ';
 
@@ -199,7 +201,7 @@ include 'header.php';
 
 
 
-                            <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="col-md-4 col-sm-6 col-xs-6 pro-loop">
 
 
 

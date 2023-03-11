@@ -105,7 +105,7 @@
     </div>
     <div class="bottom-footer text-center">
         <div class="container-fluid">
-            <p>Copyright © 2023 <a href="https://http://localhost:3000"> Figure Funny</a>. <a target="_blank" rel="noopener"
+            <p>Copyright © 2023 <a href="https://ryorder.vn"> Ryoder.vn thanks  </a>. <a target="_blank" rel="noopener"
                     href="https://www.haravan.com">Powered by Haravan</a></p>
         </div>
     </div>

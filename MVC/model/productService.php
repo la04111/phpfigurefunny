@@ -37,6 +37,14 @@ class productService
     //echo $result['Image'];
     return $result;
   }
+  public function findOneImageIdProductIdSort($id)
+{
+    $result_images = $this->dbcollectionImage->find(["ProductID" => (int)$id]);
+
+  
+    // return the images array
+    return $result_images;
+}
   public function findOneImageId($id)
   {
     $result_image = $this->dbcollectionImage->findOne(["ProductID" => (int)$id]);

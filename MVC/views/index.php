@@ -50,16 +50,16 @@ include 'header.php';
                 <div class="item ">
                     <a href="" title="" aria-label="Banner 1">
                         <picture>
-                            
-                            <img src="//theme.hstatic.net/200000588991/1000965463/14/slideshow_1_mobile.jpg?v=207" alt="">
+
+                            <img src="../../img.png" alt="">
                         </picture>
                     </a>
                 </div>
                 <div class="item ">
                     <a href="" title="" aria-label="Banner 2">
                         <picture>
-                           
-                            <img class="owl-lazy" src="https://theme.hstatic.net/200000588991/1000965463/14/slideshow_2.jpg?v=226" alt="">
+
+                            <img class="owl-lazy" src="../../banner2.png" alt="">
                         </picture>
                     </a>
                 </div>
@@ -95,23 +95,30 @@ include 'header.php';
                                 echo ' <div class="col-md-4 col-sm-6 col-xs-6 pro-loop "> ';
                                 echo ' <div class="product-block product-resize" id="section_one_loop_' . $document['ProductID'] . '"> ';
                                 echo '                   <div class="product-img">';
-                              // echo gettype($document['Stock'] );
+                                // echo gettype($document['Stock'] );
                                 if ((int)$document['Stock'] == (int)0) {
                                     echo '            <div class="product-order">Pre-order</div>';
                                 }
-                                echo '           <a href="/MVC/controller/productController.php?controller=productDetailId&value='.$document['ProductID'].'" title="' . $document['ProductName'] . '" class="image-resize ratiobox">';
-                                echo '               <picture>';
-                                // echo '                  <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
-                                // echo '                   <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
-                                //  echo '                  <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" /> ';
-                                echo '                  <img class="lazyload img-loop" data-sizes="auto" data-src="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" data-lowsrc="//product.hstatic.net/200000588991/product/1d70f2e5-495f-4bcb-bdc2-78e26db64497_3cff696c9f754a879d1f920c14e1ade8_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " /> ';
-                                echo '             </picture> ';
-                                echo '             <picture> ';
-                                // echo '                  <source media="(max-width: 480px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_medium.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
-                                //echo '                  <source media="(min-width: 481px) and (max-width: 767px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_large.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
-                                // echo '                   <source media="(min-width: 768px)" data-srcset="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="> ';
-                                echo '                   <img class="img-loop img-hover lazyload" data-src="//product.hstatic.net/200000588991/product/54b4112d-de04-40e5-b67e-0528f1bce40e_4254a955152542bab0e70c77bac25877_grande.jpeg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt=" Mô hình Scale Statue Yae Miko 18+ Genshin " /> ';
-                                echo '                </picture> ';
+                                echo '           <a href="/MVC/controller/productController.php?controller=productDetailId&value=' . $document['ProductID'] . '" title="' . $document['ProductName'] . '" class="image-resize ratiobox">';
+                                $callproductService = new productService();
+                                $result_images  = $callproductService->findOneImageIdProductIdSort($document['ProductID']);
+                                foreach ($result_images as $item) {
+                                    if (!empty($item))
+                                        if ($item['IdSort'] == "1") {
+                                            echo '               <picture>';
+                                            echo '                  <img class="lazyload img-loop" data-sizes="auto" data-src="' . $item['Image'] . '" data-lowsrc="' . $item['Image'] . '" src="' . $item['Image'] . '" alt="' . $document['ProductName'] . ' " /> ';
+                                            echo '             </picture> ';
+                                        }
+                                    if ($item['IdSort'] == "2") {
+                                        echo '             <picture> ';
+                                        echo '                   <img class="img-loop img-hover lazyload" data-src="' . $item['Image'] . '" src="' . $item['Image'] . '" alt=" ' . $document['ProductName'] . ' " /> ';
+                                        echo '                </picture> ';
+                                    }
+                                }
+
+
+
+
                                 echo '           </a> ';
                                 echo '          <div class="button-add hidden"> ';
                                 echo '              <button type="submit" title="Buy now" class="action">Mua ngay<i class="fa fa-long-arrow-right"></i></button> ';
@@ -123,7 +130,7 @@ include 'header.php';
                                 echo '       <div class="product-detail clearfix"> ';
                                 echo '           <div class="box-pro-detail"> ';
                                 echo '              <h3 class="pro-name"> ';
-                                echo '                  <a href="/MVC/controller/productController.php?controller=productDetailId&value='.$document['ProductID'].'" title="' . $document['ProductName'] . '"> ';
+                                echo '                  <a href="/MVC/controller/productController.php?controller=productDetailId&value=' . $document['ProductID'] . '" title="' . $document['ProductName'] . '"> ';
                                 echo '                      ' . $document['ProductName'] . ' ';
                                 echo '                 </a> ';
                                 echo '              </h3> ';

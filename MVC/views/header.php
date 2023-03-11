@@ -19,19 +19,19 @@
     <meta name="keywords" content="Tien Hao">
     <meta name="robots" content="index,follow,noodp">
 
-    <link rel="preload" href="//theme.hstatic.net/200000588991/1000965463/14/slideshow_1.jpg?v=207" as="image"
+    <link rel="preload" href="../../img.png" as="image"
         media="(min-width: 768px)">
-    <link rel="preload" href="//theme.hstatic.net/200000588991/1000965463/14/slideshow_2_mobile.jpg?v=207" as="image"
+    <link rel="preload" href="../../banner2.png" as="image"
         media="(max-width: 767px)">
 
-    <link rel="preload" as="style" href="//theme.hstatic.net/200000588991/1000965463/14/styles.css?v=207">
+    <link rel="preload" as="style" href="/MVC/views/styles.css>
     <link rel="preconnect" href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese">
     <link rel="preload" href="//fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese" as="style">
     <!--+++++++++++++++++++++++++  CSS ++++++++++++++++++++++++-->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese" rel="stylesheet">
     
 
-    <link href="//theme.hstatic.net/200000588991/1000965463/14/styles.css?v=207" rel="preload stylesheet" as="style"
+    <link href="/MVC/views/styles.css" rel="preload stylesheet" as="style"
         type="text/css">
 
     <!--+++++++++++++++++++++++++  JS ++++++++++++++++++++++++-->
