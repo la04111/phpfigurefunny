@@ -11,7 +11,7 @@ session_start();
 
 class productController
 {
-    private $productService;
+    public $productService;
     public function __construct()
     {
         $this->productService = new ProductService();

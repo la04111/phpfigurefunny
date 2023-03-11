@@ -37,6 +37,14 @@ class productService
     //echo $result['Image'];
     return $result;
   }
+  public function findOneImageIdProductIdSort($id)
+{
+    $result_images = $this->dbcollectionImage->find(["ProductID" => (int)$id]);
+
+  
+    // return the images array
+    return $result_images;
+}
   public function findOneImageId($id)
   {
     $result_image = $this->dbcollectionImage->findOne(["ProductID" => (int)$id]);
@@ -63,17 +71,24 @@ class productService
     }
   }
   //add list img
-  public function UpdateListImage($listimg)
+  public function UpdateListImage($idProduct,$listimg)
   {
     try {
-     
+      $deleteall = $this->dbcollectionImage->deleteMany(["ProductID" => (int)$idProduct]);
       // xu ly hinh anh nhieu tam
-      // $this->dbcollectionImage->updateOne(['ProductID' => $im->GetProductID()],
-      // ['$set' => ['IdSort' => $im->GetIDSort(),
-      //              'Image' => $im->GetImage()
-      //              ]]);
-
-      // insert the document in the collection
+      $imgall = explode("@", $listimg); // ~ split
+      $i = 1;
+      foreach ($imgall as $img) {
+        if (!empty($img)) {
+          $addimg = [
+            'ProductID' => (int)$idProduct,
+            'IdSort' => (int)$i,
+            'Image' => $img
+          ];
+          $this->dbcollectionImage->insertOne($addimg);
+          (int)$i++;
+        }
+      }
       return true;
     } catch (Exception $e) {
       // handle the exception
@@ -103,7 +118,30 @@ class productService
     $result = $this->dbcollectionproduct->findOne(["ProductID" => (int)$id]);
     return $result;
   }
-
+  public function updateProduct(Product $p)
+  {
+      try {
+          $result = $this->dbcollectionproduct->updateOne(
+              ['ProductID' => (int)$p->GetProductID()],
+              ['$set' => [
+                  'ProductName' => $p->GetProductName(),
+                  'Series' => $p->GetSeries(),
+                  'Brand' => $p->GetBrand(),
+                  'Note' =>  $p->GetNote(),
+                  'DateRelease' => $p->GetDateRelease(),
+                  'ProductStatus' => $p->GetProductStatus(),
+                  'Price' => (float)$p->GetPrice(),
+                  'Stock' => (int)$p->GetStock(),
+                  'Infor' => $p->GetInfor()
+              ]]
+          );
+        
+         return true;
+      } catch (Exception $e) {
+          // handle the exception
+          return false;
+      }
+  }
   public function addProduct(Product $p, $list_image)
   {
 

@@ -24,7 +24,7 @@ class Product {
     }
     public function SetProductID($ProductID)
     {
-      $this->ProductID = strtoupper($ProductID);
+      $this->ProductID = $ProductID;
 
     }
     public function GetProductName()
@@ -33,7 +33,7 @@ class Product {
     }
     public function SetProductName($ProductName)
     {
-      $this->ProductName = strtoupper($ProductName);
+      $this->ProductName = ($ProductName);
 
     }
     public function GetSeries()
@@ -42,7 +42,7 @@ class Product {
     }
     public function SetSeries($Series)
     {
-      $this->Series = strtoupper($Series);
+      $this->Series = $Series;
 
     }
     public function GetBrand()
@@ -51,7 +51,7 @@ class Product {
     }
     public function SetBrand($Brand)
     {
-      $this->Brand = strtoupper($Brand);
+      $this->Brand = $Brand;
 
     }
     public function GetNote()
@@ -60,7 +60,7 @@ class Product {
     }
     public function SetNote($Note)
     {
-      $this->Note = strtoupper($Note);
+      $this->Note = $Note;
 
     }
     public function GetDateRelease()
@@ -69,7 +69,7 @@ class Product {
     }
     public function SetDateRelease($DateRelease)
     {
-      $this->DateRelease = strtoupper($DateRelease);
+      $this->DateRelease = ($DateRelease);
 
     }
     public function GetProductStatus()
@@ -78,7 +78,7 @@ class Product {
     }
     public function SetProductStatus($ProductStatus)
     {
-      $this->ProductStatus = strtoupper($ProductStatus);
+      $this->ProductStatus = ($ProductStatus);
 
     }
     public function GetPrice()
@@ -87,7 +87,7 @@ class Product {
     }
     public function SetPrice($Price)
     {
-      $this->Price = strtoupper($Price);
+      $this->Price = $Price;
 
     }
     public function GetStock()
@@ -96,7 +96,7 @@ class Product {
     }
     public function SetStock($Stock)
     {
-      $this->Stock = strtoupper($Stock);
+      $this->Stock = $Stock;
 
     }
   
@@ -107,7 +107,7 @@ class Product {
     }
     public function SetInfor($Infor)
     {
-      $this->Infor = strtoupper($Infor);
+      $this->Infor = $Infor;
 
     }
 }
