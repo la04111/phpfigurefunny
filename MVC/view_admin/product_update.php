@@ -29,7 +29,7 @@
                         <!-- form start -->
                         <form method="post" action="/MVC/controller/adminController.php?controller=updateProductPOST">
                             <div class="card-body">
-                            <div class="form-group" style="display: none;">
+                                <div class="form-group" style="display: none;">
                                     <label for="exampleInputEmail1">id</label> <input type="text" class="form-control" id="ProductID" name="ProductID" value="<?php echo $result['ProductID']; ?>" placeholder="Nhập sản phẩm">
                                 </div>
                                 <div class="form-group">
@@ -81,15 +81,30 @@
                                                 (int)$checkimg++;
                                             }
                                             if ($checkimg == 1) {
-                                                echo ' <img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image0" />';
+                                                echo ' <img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image1" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image2" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image4" />';
+                                            }
+                                            if ($checkimg == 2) {
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image2" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image4" />';
+                                            }
+                                            if ($checkimg == 3) {
+
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" />';
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image4" />';
+                                            }
+                                            if ($checkimg == 4) {
+
+                                                echo '<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image4" />';
                                             }
                                         } catch (Exception $e) {
                                         }
                                         ?>
 
-                                        <!-- <img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image1" />
-                                        <img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image2" />
-                                        <img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" /> -->
+
                                     </div>
                                     <input style="display:none;" type="text" class="form-control" id="geturlcloud" name="geturlcloud">
 
@@ -118,7 +133,11 @@
     const CLOUDINARY_UPLOAD_PRESET = 'r2wkhf6u';
     const image = document.querySelector('#fileupload');
     image.addEventListener('change', (e) => {
-
+        document.getElementById("myButton").setAttribute("disabled", "true");
+        document.getElementById('image1').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image2').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image3').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image4').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
         const formData = new FormData();
 
         const length = e.target.files.length;
@@ -153,17 +172,33 @@
                             // alert(url);
                             var t = document.getElementById('geturlcloud').value + "@" + url;
                             document.getElementById('geturlcloud').value = t;
-                            if (i == 0)
-                                document.getElementById('image0').src = url;
-                            if (i == 1)
+
+                            if (i == 0) {
                                 document.getElementById('image1').src = url;
-                            if (i == 2)
+
+                               
+                                document.getElementById('images1').src = url;
+                               
+                            }
+                            if (i == 1) {
                                 document.getElementById('image2').src = url;
-                            if (i == 3)
+                                document.getElementById('images2').src = url;
+
+                            }
+                            if (i == 2) {
                                 document.getElementById('image3').src = url;
+                                document.getElementById('images3').src = url;
+                            }
+                            if (i == 3) {
+                                document.getElementById('image4').src = url;
+                                document.getElementById('images4').src = url;
+                            }
 
                         }
-
+                        // alert(i + ' ' +length);
+                        // if (i == length - 1) {
+                        document.getElementById("myButton").removeAttribute("disabled");
+                        //     }
                     } else {
                         alert('upload thất bại');
                     }

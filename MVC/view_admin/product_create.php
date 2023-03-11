@@ -27,7 +27,7 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form  method="post" action="/MVC/controller/adminController.php?controller=createProductPOST">
+						<form method="post" action="/MVC/controller/adminController.php?controller=createProductPOST">
 							<div class="card-body">
 								<div class="form-group">
 									<label for="exampleInputEmail1">Tên sản phẩm</label> <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="Nhập sản phẩm">
@@ -66,14 +66,14 @@
 										</div>
 
 									</div>
-									<div style="margin: 2% 0 0 2%;" >
-										<img  src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image0" />
-										<img  src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image1" />
-										<img  src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image2" />
-										<img  src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" />
+									<div style="margin: 2% 0 0 2%;">
+										<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image0" />
+										<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image1" />
+										<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image2" />
+										<img src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png" width="300vw" height="200vh" id="image3" />
 									</div>
 									<input style="display:none;" type="text" class="form-control" id="geturlcloud" name="geturlcloud">
-									
+
 								</div>
 
 							</div>
@@ -99,7 +99,10 @@
 	const CLOUDINARY_UPLOAD_PRESET = 'r2wkhf6u';
 	const image = document.querySelector('#fileupload');
 	image.addEventListener('change', (e) => {
-
+		document.getElementById('image0').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image1').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image2').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+        document.getElementById('image3').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
 		const formData = new FormData();
 
 		const length = e.target.files.length;
@@ -134,20 +137,28 @@
 							// alert(url);
 							var t = document.getElementById('geturlcloud').value + "@" + url;
 							document.getElementById('geturlcloud').value = t;
-							if(i == 0)
-							document.getElementById('image0').src = url;
-							if(i == 1)
-							document.getElementById('image1').src = url;
-							if(i == 2)
-							document.getElementById('image2').src = url;
-							if(i == 3)
-							document.getElementById('image3').src = url;
-							
-						}
-						const myButton = document.getElementById("myButton");
+							if (i == 0) {
+								document.getElementById('image0').src = url;
+								
+							}
+							if (i == 1) {
+								document.getElementById('image1').src = url;
+								
+							}
+							if (i == 2) {
+								document.getElementById('image2').src = url;
+								
+							}
+							if (i == 3)
+								document.getElementById('image3').src = url;
 
-// Enable the button
-myButton.removeAttribute("disabled");
+						}
+						if(i == length-1){
+							const myButton = document.getElementById("myButton");
+
+						// Enable the button
+						myButton.removeAttribute("disabled");
+						}
 						//if (i == length - 1) {
 						//    document.getElementById("myForm").submit();
 						//}
