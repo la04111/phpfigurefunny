@@ -4137,6 +4137,29 @@
                                             </svg>
                                         </span>
                                         <div class="header-dropdown_content">
+                                            <!-- account here -->
+                                            <?php
+                                            if (isset($_SESSION['accountuser'])) {
+                                                $user = $_SESSION['accountuser'];
+                                                echo $user['lastname'];
+                                            }
+
+                                            ?>
+                                            <!-- <div class="site_account site_account_info " id="siteNav-account">
+                                                <div class="site_account_panel_list">
+                                                    <div class="site_account_info">
+                                                        <div class="site_account_header">
+                                                            <h2 class="site_account_title heading">Thông tin tài khoản</h2>
+                                                        </div>
+                                                        <ul>
+                                                            <li><span>Tien Nguyen</span></li>
+                                                            <li><a href="/account">Tài khoản của tôi</a></li>
+                                                            <li><a href="/account/addresses">Danh sách địa chỉ</a></li>
+                                                            <li><a href="/account/logout">Đăng xuất</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                             <div class="site_account " id="siteNav-account">
                                                 <div class="site_account_panel_list">
                                                     <div id="header-login-panel" class="site_account_panel site_account_default is-selected">
@@ -4147,24 +4170,24 @@
                                                                 của bạn:</p>
                                                         </div>
                                                         <div class="site_account_inner">
-                                                            <form accept-charset='UTF-8' action='/account/login' id='customer_login' method='post'>
+                                                            <form accept-charset='UTF-8' action='/MVC/controller/userController.php?controller=loginUserPOST' id='customer_login' method='post'>
                                                                 <input name='form_type' type='hidden' value='customer_login'>
                                                                 <input name='utf8' type='hidden' value='✓'>
 
                                                                 <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="email" id="login-customer[email]" class="form__field form__field--text" name="customer[email]" required="required">
-                                                                    <label for="login-customer[email]" class="form__floating-label">Email</label>
+                                                                    <input type="email" id="email" class="form__field form__field--text" name="email" required="required">
+                                                                    <label for="email" class="form__floating-label">Email</label>
                                                                 </div>
                                                                 <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="password" id="login-customer[password]" class="form__field form__field--text" name="customer[password]" required="required" autocomplete="current-password">
-                                                                    <label for="login-customer[password]" class="form__floating-label">Mật
+                                                                    <input type="password" id="password" class="form__field form__field--text" name="password" required="required" autocomplete="current-password">
+                                                                    <label for="password" class="form__floating-label">Mật
                                                                         khẩu</label>
 
-                                                                   
+
                                                                 </div>
                                                                 <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>
 
-                                                          
+
                                                             </form>
                                                             <div class="site_account_secondary-action">
                                                                 <p>Khách hàng mới?
@@ -4192,22 +4215,11 @@
                                                                 <div class="form__input-wrapper form__input-wrapper--labelled">
                                                                     <input type="email" id="recover-customer[recover_email]" class="form__field form__field--text" name="email" required="required">
                                                                     <label for="recover-customer[recover_email]" class="form__floating-label">Email</label>
-                                                                    <div class="sitebox-recaptcha">
-                                                                        This site is protected by reCAPTCHA and the
-                                                                        Google
-                                                                        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy
-                                                                            Policy</a>
-                                                                        and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms
-                                                                            of Service</a> apply.
-                                                                    </div>
+
                                                                 </div>
                                                                 <button type="submit" class="form__submit button dark" id="form_submit-recover">Khôi phục</button>
 
-                                                                <input id='77848e987a0b4e7c99a1978de559d11d' name='g-recaptcha-response' type='hidden'><noscript data-src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></noscript><noscript>grecaptcha.ready(function()
-                                                                    {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-',
-                                                                    {action: 'submit'}).then(function(token)
-                                                                    {document.getElementById('77848e987a0b4e7c99a1978de559d11d').value
-                                                                    = token;});});</noscript>
+
                                                             </form>
                                                             <div class="site_account_secondary-action">
                                                                 <p>Bạn đã nhớ mật khẩu?
@@ -4242,7 +4254,7 @@
                                                     </svg>
                                                 </span>
                                                 <span class="count-holder">
-                                                    <span class="count">2</span> 
+                                                    <span class="count">2</span>
                                                     <!-- cart ammout -->
                                                 </span>
                                             </span>
@@ -4265,7 +4277,7 @@
                                                         <div class="cart-view-scroll">
                                                             <table id="clone-item-cart" class="table-clone-cart">
                                                                 <tbody>
-                                                                    
+
                                                                 </tbody>
                                                             </table>
                                                             <table id="cart-view">
@@ -4281,7 +4293,7 @@
                                                                                 <div class="pro-quantity-view"><span class="qty-value">1</span></div>
                                                                                 <div class="pro-price-view">1,370,000₫</div>
                                                                             </div>
-                                                                            <div class="remove_link remove-cart"><a href="javascript:void(0);" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                                                                            <div class="remove_link remove-cart"><a href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
                                                                                         <g>
                                                                                             <path d="M500,442.7L79.3,22.6C63.4,6.7,37.7,6.7,21.9,22.5C6.1,38.3,6.1,64,22,79.9L442.6,500L22,920.1C6,936,6.1,961.6,21.9,977.5c15.8,15.8,41.6,15.8,57.4-0.1L500,557.3l420.7,420.1c16,15.9,41.6,15.9,57.4,0.1c15.8-15.8,15.8-41.5-0.1-57.4L557.4,500L978,79.9c16-15.9,15.9-41.5,0.1-57.4c-15.8-15.8-41.6-15.8-57.4,0.1L500,442.7L500,442.7z"></path>
                                                                                         </g>

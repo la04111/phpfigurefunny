@@ -12,9 +12,17 @@ class ComposerStaticInit00bf6637f8e1058d2edcbd9b223aa533
     );
 
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tien\\PhpProject\\' => 16,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
+        ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -27,9 +35,17 @@ class ComposerStaticInit00bf6637f8e1058d2edcbd9b223aa533
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tien\\PhpProject\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'MongoDB\\' => 
         array (
