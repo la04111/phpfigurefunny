@@ -4160,26 +4160,15 @@
                                                                     <label for="login-customer[password]" class="form__floating-label">Mật
                                                                         khẩu</label>
 
-                                                                    <div class="sitebox-recaptcha">
-                                                                        This site is protected by reCAPTCHA and the
-                                                                        Google
-                                                                        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy
-                                                                            Policy</a>
-                                                                        and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms
-                                                                            of Service</a> apply.
-                                                                    </div>
+                                                                   
                                                                 </div>
                                                                 <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>
 
-                                                                <input id='8feb54ba4d844a93b0bc32357e186c75' name='g-recaptcha-response' type='hidden'><noscript data-src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></noscript><noscript>grecaptcha.ready(function()
-                                                                    {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-',
-                                                                    {action: 'submit'}).then(function(token)
-                                                                    {document.getElementById('8feb54ba4d844a93b0bc32357e186c75').value
-                                                                    = token;});});</noscript>
+                                                          
                                                             </form>
                                                             <div class="site_account_secondary-action">
                                                                 <p>Khách hàng mới?
-                                                                    <a class="link" href="/account/register">Tạo tài
+                                                                    <a class="link" href="/MVC/controller/userController.php?controller=registerUserGET">Tạo tài
                                                                         khoản</a>
                                                                 </p>
                                                                 <p>Quên mật khẩu?
