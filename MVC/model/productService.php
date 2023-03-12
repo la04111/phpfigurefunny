@@ -19,16 +19,7 @@ class productService
 
     $result = $this->dbcollectionproduct->find([]);
     return $result;
-    // foreach ($result as $document) {
-    //   echo 'ProductID: ' . $document['ProductID'] . '<br>';
-    //   echo 'ProductName: ' . $document['ProductName'] . '<br>';
-    //   echo 'Series: ' . $document['Series'] . '<br>';
-    //   echo 'Brand: ' . $document['Brand'] . '<br>';
-    //   echo 'Note: ' . $document['Note'] . '<br>';
 
-    //   echo 'DateRelease: ' . $document['DateRelease'] . '<br>';
-    //   echo 'ProductStatus: ' . $document['ProductStatus'] . '<br><br>';
-    // }
   }
   // IMAGE  GET
   public function getImagewithID($id)
@@ -37,14 +28,23 @@ class productService
     //echo $result['Image'];
     return $result;
   }
+  public function findOneImageIdProduct($id)
+  {
+    $result_image = $this->dbcollectionImage->findOne(
+      ["ProductID" => (int)$id],
+      ['sort' => ['_id' => -1]]
+    );
+    if (!empty($result_image))
+      return $result_image['Image'];
+    else return "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
+ 
+  }
   public function findOneImageIdProductIdSort($id)
-{
+  {
     $result_images = $this->dbcollectionImage->find(["ProductID" => (int)$id]);
-
-  
     // return the images array
     return $result_images;
-}
+  }
   public function findOneImageId($id)
   {
     $result_image = $this->dbcollectionImage->findOne(["ProductID" => (int)$id]);
@@ -56,12 +56,15 @@ class productService
   public function UpdateOneImage(Image $im)
   {
     try {
-     
+
       // xu ly hinh anh nhieu tam
-      $this->dbcollectionImage->updateOne(['ProductID' => $im->GetProductID()],
-      ['$set' => ['IdSort' => $im->GetIDSort(),
-                   'Image' => $im->GetImage()
-                   ]]);
+      $this->dbcollectionImage->updateOne(
+        ['ProductID' => $im->GetProductID()],
+        ['$set' => [
+          'IdSort' => $im->GetIDSort(),
+          'Image' => $im->GetImage()
+        ]]
+      );
 
       // insert the document in the collection
       return true;
@@ -71,7 +74,7 @@ class productService
     }
   }
   //add list img
-  public function UpdateListImage($idProduct,$listimg)
+  public function UpdateListImage($idProduct, $listimg)
   {
     try {
       $deleteall = $this->dbcollectionImage->deleteMany(["ProductID" => (int)$idProduct]);
@@ -120,27 +123,27 @@ class productService
   }
   public function updateProduct(Product $p)
   {
-      try {
-          $result = $this->dbcollectionproduct->updateOne(
-              ['ProductID' => (int)$p->GetProductID()],
-              ['$set' => [
-                  'ProductName' => $p->GetProductName(),
-                  'Series' => $p->GetSeries(),
-                  'Brand' => $p->GetBrand(),
-                  'Note' =>  $p->GetNote(),
-                  'DateRelease' => $p->GetDateRelease(),
-                  'ProductStatus' => $p->GetProductStatus(),
-                  'Price' => (float)$p->GetPrice(),
-                  'Stock' => (int)$p->GetStock(),
-                  'Infor' => $p->GetInfor()
-              ]]
-          );
-        
-         return true;
-      } catch (Exception $e) {
-          // handle the exception
-          return false;
-      }
+    try {
+      $result = $this->dbcollectionproduct->updateOne(
+        ['ProductID' => (int)$p->GetProductID()],
+        ['$set' => [
+          'ProductName' => $p->GetProductName(),
+          'Series' => $p->GetSeries(),
+          'Brand' => $p->GetBrand(),
+          'Note' =>  $p->GetNote(),
+          'DateRelease' => $p->GetDateRelease(),
+          'ProductStatus' => $p->GetProductStatus(),
+          'Price' => (float)$p->GetPrice(),
+          'Stock' => (int)$p->GetStock(),
+          'Infor' => $p->GetInfor()
+        ]]
+      );
+
+      return true;
+    } catch (Exception $e) {
+      // handle the exception
+      return false;
+    }
   }
   public function addProduct(Product $p, $list_image)
   {
@@ -183,6 +186,11 @@ class productService
     }
     // printf(" Success Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 
-
+  }
+  //GET LIST PRODUCT WITH Series
+  public function GetSeries($Seri)
+  {
+    $result_SeriresList = $this->dbcollectionproduct->find(["Series" => $Seri]);
+    return $result_SeriresList;
   }
 }
