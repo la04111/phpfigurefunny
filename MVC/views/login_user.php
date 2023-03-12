@@ -57,7 +57,7 @@ include 'header.php';
                             <div class="accounttype">
                                 <h2>Phục hồi mật khẩu</h2>
                             </div>
-                            <form accept-charset="UTF-8" action="/account/recover" method="post">
+                            <form accept-charset="UTF-8" action="/MVC/controller/userController.php?controller=ForgotPassWordPOST" method="post">
                                 <input name="form_type" type="hidden" value="recover_customer_password">
                                 <input name="utf8" type="hidden" value="✓">
 

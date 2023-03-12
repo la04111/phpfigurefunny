@@ -3,7 +3,7 @@
         'name' => 'tien/php_project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'c81f0ee580843eb01c74b96314b0c9c14cbc611a',
+        'reference' => 'b56a21b0358587a8374bbbfb5c12fcae58be36f9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -49,7 +49,7 @@
         'tien/php_project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c81f0ee580843eb01c74b96314b0c9c14cbc611a',
+            'reference' => 'b56a21b0358587a8374bbbfb5c12fcae58be36f9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

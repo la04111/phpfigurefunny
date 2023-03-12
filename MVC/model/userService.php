@@ -32,6 +32,19 @@ class UserService
             return false;
         }
     }
+    //Find user with email
+    public function findEmail($email)
+    {
+        $findEmail = $this->dbcollectionuser->findOne([
+            "email" => $email
+        ]);
+        
+        if ($findEmail['email'] != null) {
+            return $findEmail;
+        } else {
+            return  false;
+        }
+    }
     //// C R U    USER
     public function addUser(Users $u)
     {
@@ -72,7 +85,7 @@ class UserService
                 "roles" => "customer",
                 "phonenum" => $u->GetPhonenum(),
                 "address" => $u->GetAddress(),
-                "id" => 1,
+                "id" => (int)1,
                 "firstname" => $u->GetFirstName(),
                 "lastname" => $u->GetLastName()
             ]

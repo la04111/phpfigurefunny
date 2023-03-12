@@ -4141,96 +4141,89 @@
                                             <?php
                                             if (isset($_SESSION['accountuser'])) {
                                                 $user = $_SESSION['accountuser'];
-                                                echo $user['lastname'];
+                                                echo'  <div class="site_account site_account_info " id="siteNav-account"> ';
+                                                echo' <div class="site_account_panel_list">';
+                                                echo'   <div class="site_account_info">';
+                                                echo'       <div class="site_account_header">';
+                                                echo'           <h2 class="site_account_title heading">Thông tin tài khoản</h2>';
+                                                echo'       </div>';
+                                                echo'       <ul>';
+                                                echo'           <li><span>'.$user['firstname']." ". $user['lastname'].'</span></li>';
+                                                echo'             <li><a href="/account">Tài khoản của tôi</a></li>';
+                                                echo'            <li><a href="/account/addresses">Danh sách địa chỉ</a></li>';
+                                                echo'            <li><a href="/MVC/controller/userController.php?controller=logout">Đăng xuất</a></li>';
+                                                echo'        </ul>';
+                                                echo'     </div>';
+                                                echo' </div>';
+                                                echo' </div>';
+                                            }else {
+                                                echo ' <div class="site_account " id="siteNav-account"> ';
+                                                echo ' <div class="site_account_panel_list">';
+                                                echo '   <div id="header-login-panel" class="site_account_panel site_account_default is-selected">';
+                                                echo '       <div class="site_account_header">';
+                                                echo '           <h2 class="site_account_title heading">Đăng nhập tài';
+                                                echo '                khoản</h2>';
+                                                echo '            <p class="site_account_legend">Nhập email và mật khẩu';
+                                                echo '               của bạn:</p>';
+                                                echo '        </div>';
+                                                echo '      <div class="site_account_inner">';
+                                                echo '          <form accept-charset="UTF-8" action="/MVC/controller/userController.php?controller=loginUserPOST" id="customer_login" method="post">';
+                                                echo '             <input name="form_type" type="hidden" value="customer_login">';
+                                                echo '             <input name="utf8" type="hidden" value="✓">';
+                                                echo '              <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                    <input type="email" id="email" class="form__field form__field--text" name="email" required="required">';
+                                                echo '                   <label for="email" class="form__floating-label">Email</label>';
+                                                echo '               </div>';
+                                                echo '               <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                  <input type="password" id="password" class="form__field form__field--text" name="password" required="required" autocomplete="current-password">';
+                                                echo '                  <label for="password" class="form__floating-label">Mật';
+                                                echo '                      khẩu</label>';
+                                                echo '             </div>';
+                                                echo '              <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>';
+                                                echo '          </form>';
+                                                echo '           <div class="site_account_secondary-action">';
+                                                echo '               <p>Khách hàng mới?';
+                                                echo '               <a class="link" href="/MVC/controller/userController.php?controller=registerUserGET">Tạo tài';
+                                                echo '                      khoản</a>';
+                                                echo '               </p>';
+                                                echo '              <p>Quên mật khẩu?';
+                                                echo '                  <button aria-controls="header-recover-panel" class="js-link link">Khôi phục mật';
+                                                echo '                      khẩu</button>';
+                                                echo '             </p>';
+                                                echo '         </div>';
+                                                echo '      </div>';
+                                                echo '  </div>';
+                                                echo '  <div id="header-recover-panel" class="site_account_panel  site_account_sliding">';
+                                                echo '       <div class="site_account_header">';
+                                                echo '          <h2 class="site_account_title heading">Khôi phục mật';
+                                                echo '              khẩu</h2>';
+                                                echo '          <p class="site_account_legend">Nhập email của bạn:</p>';
+                                                echo '      </div>';
+                                                echo '      <div class="site_account_inner">';
+                                                echo '           <form accept-charset="UTF-8" action="/MVC/controller/userController.php?controller=ForgotPassWordPOST" method="post">';
+                                                echo '              <input name="form_type" type="hidden" value="recover_customer_password">';
+                                                echo '             <input name="utf8" type="hidden" value="✓">';
+                                                echo '               <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                   <input type="email" id="email" class="form__field form__field--text" name="email" required="required">';
+                                                echo '                    <label for="email" class="form__floating-label">Email</label>';
+                                                echo '               </div>';
+                                                echo '              <button type="submit" class="form__submit button dark" id="form_submit-recover">Khôi phục</button>';
+                                                echo '            </form>';
+                                                echo '          <div class="site_account_secondary-action">';
+                                                echo '              <p>Bạn đã nhớ mật khẩu?';
+                                                echo '                 <button aria-controls="header-login-panel" class="js-link link">Trở về đăng';
+                                                echo '                     nhập</button>';
+                                                echo '              </p>';
+                                                echo '           </div>';
+                                                echo '       </div>';
+                                                echo '   </div>';
+                                                echo ' </div>';
+                                                echo '</div>';
                                             }
 
                                             ?>
-                                            <!-- <div class="site_account site_account_info " id="siteNav-account">
-                                                <div class="site_account_panel_list">
-                                                    <div class="site_account_info">
-                                                        <div class="site_account_header">
-                                                            <h2 class="site_account_title heading">Thông tin tài khoản</h2>
-                                                        </div>
-                                                        <ul>
-                                                            <li><span>Tien Nguyen</span></li>
-                                                            <li><a href="/account">Tài khoản của tôi</a></li>
-                                                            <li><a href="/account/addresses">Danh sách địa chỉ</a></li>
-                                                            <li><a href="/account/logout">Đăng xuất</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <div class="site_account " id="siteNav-account">
-                                                <div class="site_account_panel_list">
-                                                    <div id="header-login-panel" class="site_account_panel site_account_default is-selected">
-                                                        <div class="site_account_header">
-                                                            <h2 class="site_account_title heading">Đăng nhập tài
-                                                                khoản</h2>
-                                                            <p class="site_account_legend">Nhập email và mật khẩu
-                                                                của bạn:</p>
-                                                        </div>
-                                                        <div class="site_account_inner">
-                                                            <form accept-charset='UTF-8' action='/MVC/controller/userController.php?controller=loginUserPOST' id='customer_login' method='post'>
-                                                                <input name='form_type' type='hidden' value='customer_login'>
-                                                                <input name='utf8' type='hidden' value='✓'>
-
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="email" id="email" class="form__field form__field--text" name="email" required="required">
-                                                                    <label for="email" class="form__floating-label">Email</label>
-                                                                </div>
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="password" id="password" class="form__field form__field--text" name="password" required="required" autocomplete="current-password">
-                                                                    <label for="password" class="form__floating-label">Mật
-                                                                        khẩu</label>
-
-
-                                                                </div>
-                                                                <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>
-
-
-                                                            </form>
-                                                            <div class="site_account_secondary-action">
-                                                                <p>Khách hàng mới?
-                                                                    <a class="link" href="/MVC/controller/userController.php?controller=registerUserGET">Tạo tài
-                                                                        khoản</a>
-                                                                </p>
-                                                                <p>Quên mật khẩu?
-                                                                    <button aria-controls="header-recover-panel" class="js-link link">Khôi phục mật
-                                                                        khẩu</button>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="header-recover-panel" class="site_account_panel  site_account_sliding">
-                                                        <div class="site_account_header">
-                                                            <h2 class="site_account_title heading">Khôi phục mật
-                                                                khẩu</h2>
-                                                            <p class="site_account_legend">Nhập email của bạn:</p>
-                                                        </div>
-                                                        <div class="site_account_inner">
-                                                            <form accept-charset='UTF-8' action='/account/recover' method='post'>
-                                                                <input name='form_type' type='hidden' value='recover_customer_password'>
-                                                                <input name='utf8' type='hidden' value='✓'>
-
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="email" id="recover-customer[recover_email]" class="form__field form__field--text" name="email" required="required">
-                                                                    <label for="recover-customer[recover_email]" class="form__floating-label">Email</label>
-
-                                                                </div>
-                                                                <button type="submit" class="form__submit button dark" id="form_submit-recover">Khôi phục</button>
-
-
-                                                            </form>
-                                                            <div class="site_account_secondary-action">
-                                                                <p>Bạn đã nhớ mật khẩu?
-                                                                    <button aria-controls="header-login-panel" class="js-link link">Trở về đăng
-                                                                        nhập</button>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                          
+                                           
 
                                         </div>
                                     </div>
