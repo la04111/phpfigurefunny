@@ -55,14 +55,14 @@ include 'header.php';
                         </picture>
                     </a>
                 </div>
-                <div class="item ">
+                <!-- <div class="item ">
                     <a href="" title="" aria-label="Banner 2">
                         <picture>
 
                             <img class="owl-lazy" src="../../banner2.png" alt="">
                         </picture>
                     </a>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -124,7 +124,7 @@ include 'header.php';
                                 echo '              <button type="submit" title="Buy now" class="action">Mua ngay<i class="fa fa-long-arrow-right"></i></button> ';
                                 echo '           </div> ';
                                 echo '          <div class="pro-price-mb"> ';
-                                echo '               <span class="pro-price">' . $document['Price'] . 'đ</span> ';
+                                echo '               <span class="pro-price">'.number_format( $document["Price"]  , 0, '.', '.') . 'đ'.'</span> ';
                                 echo '           </div> ';
                                 echo '       </div> ';
                                 echo '       <div class="product-detail clearfix"> ';
@@ -136,7 +136,7 @@ include 'header.php';
                                 echo '              </h3> ';
                                 echo '              <div class="box-pro-prices"> ';
                                 echo '                  <p class="pro-price "> ';
-                                echo '                       <span>' . $document['Price'] . '₫</span> ';
+                                echo '                       <span>'.number_format( $document["Price"]  , 0, '.', '.') . 'đ'.'</span> ';
                                 echo '                  </p> ';
                                 echo '              </div> ';
                                 echo '           </div> ';

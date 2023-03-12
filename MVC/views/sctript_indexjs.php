@@ -5941,7 +5941,7 @@ function attributeToString(attribute) {
 </script>
 <!-- haravan app -->
 <!-- END - haravan app -->
-<script src="//theme.hstatic.net/200000588991/1000965463/14/scripts.js?v=207"></script>
+<script src="/MVC/views/scripts.js"></script>
 <!-- POPUP LOAD -->
 <!--END *** POPUP LOAD =====================-->
 <!-- chatbot-harafunnel -->
