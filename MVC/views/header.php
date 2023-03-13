@@ -4137,88 +4137,93 @@
                                             </svg>
                                         </span>
                                         <div class="header-dropdown_content">
-                                            <div class="site_account " id="siteNav-account">
-                                                <div class="site_account_panel_list">
-                                                    <div id="header-login-panel" class="site_account_panel site_account_default is-selected">
-                                                        <div class="site_account_header">
-                                                            <h2 class="site_account_title heading">Đăng nhập tài
-                                                                khoản</h2>
-                                                            <p class="site_account_legend">Nhập email và mật khẩu
-                                                                của bạn:</p>
-                                                        </div>
-                                                        <div class="site_account_inner">
-                                                            <form accept-charset='UTF-8' action='/account/login' id='customer_login' method='post'>
-                                                                <input name='form_type' type='hidden' value='customer_login'>
-                                                                <input name='utf8' type='hidden' value='✓'>
+                                            <!-- account here -->
+                                            <?php
+                                            if (isset($_SESSION['accountuser'])) {
+                                                $user = $_SESSION['accountuser'];
+                                                echo '  <div class="site_account site_account_info " id="siteNav-account"> ';
+                                                echo ' <div class="site_account_panel_list">';
+                                                echo '   <div class="site_account_info">';
+                                                echo '       <div class="site_account_header">';
+                                                echo '           <h2 class="site_account_title heading">Thông tin tài khoản</h2>';
+                                                echo '       </div>';
+                                                echo '       <ul>';
+                                                echo '           <li><span>' . $user['firstname'] . " " . $user['lastname'] . '</span></li>';
+                                                echo '             <li><a href="/MVC/controller/userController.php?controller=inforUserGET">Tài khoản của tôi</a></li>';
+                                                // echo'            <li><a href="/account/addresses">Danh sách địa chỉ</a></li>';
+                                                echo '            <li><a href="/MVC/controller/userController.php?controller=logout">Đăng xuất</a></li>';
+                                                echo '        </ul>';
+                                                echo '     </div>';
+                                                echo ' </div>';
+                                                echo ' </div>';
+                                            } else {
+                                                echo ' <div class="site_account " id="siteNav-account"> ';
+                                                echo ' <div class="site_account_panel_list">';
+                                                echo '   <div id="header-login-panel" class="site_account_panel site_account_default is-selected">';
+                                                echo '       <div class="site_account_header">';
+                                                echo '           <h2 class="site_account_title heading">Đăng nhập tài';
+                                                echo '                khoản</h2>';
+                                                echo '            <p class="site_account_legend">Nhập email và mật khẩu';
+                                                echo '               của bạn:</p>';
+                                                echo '        </div>';
+                                                echo '      <div class="site_account_inner">';
+                                                echo '          <form accept-charset="UTF-8" action="/MVC/controller/userController.php?controller=loginUserPOST" id="customer_login" method="post">';
+                                                echo '             <input name="form_type" type="hidden" value="customer_login">';
+                                                echo '             <input name="utf8" type="hidden" value="✓">';
+                                                echo '              <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                    <input type="email" id="email" class="form__field form__field--text" name="email" required="required">';
+                                                echo '                   <label for="email" class="form__floating-label">Email</label>';
+                                                echo '               </div>';
+                                                echo '               <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                  <input type="password" id="password" class="form__field form__field--text" name="password" required="required" autocomplete="current-password">';
+                                                echo '                  <label for="password" class="form__floating-label">Mật';
+                                                echo '                      khẩu</label>';
+                                                echo '             </div>';
+                                                echo '              <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>';
+                                                echo '          </form>';
+                                                echo '           <div class="site_account_secondary-action">';
+                                                echo '               <p>Khách hàng mới?';
+                                                echo '               <a class="link" href="/MVC/controller/userController.php?controller=registerUserGET">Tạo tài';
+                                                echo '                      khoản</a>';
+                                                echo '               </p>';
+                                                echo '              <p>Quên mật khẩu?';
+                                                echo '                  <button aria-controls="header-recover-panel" class="js-link link">Khôi phục mật';
+                                                echo '                      khẩu</button>';
+                                                echo '             </p>';
+                                                echo '         </div>';
+                                                echo '      </div>';
+                                                echo '  </div>';
+                                                echo '  <div id="header-recover-panel" class="site_account_panel  site_account_sliding">';
+                                                echo '       <div class="site_account_header">';
+                                                echo '          <h2 class="site_account_title heading">Khôi phục mật';
+                                                echo '              khẩu</h2>';
+                                                echo '          <p class="site_account_legend">Nhập email của bạn:</p>';
+                                                echo '      </div>';
+                                                echo '      <div class="site_account_inner">';
+                                                echo '           <form accept-charset="UTF-8" action="/MVC/controller/userController.php?controller=ForgotPassWordPOST" method="post">';
+                                                echo '              <input name="form_type" type="hidden" value="recover_customer_password">';
+                                                echo '             <input name="utf8" type="hidden" value="✓">';
+                                                echo '               <div class="form__input-wrapper form__input-wrapper--labelled">';
+                                                echo '                   <input type="email" id="email" class="form__field form__field--text" name="email" required="required">';
+                                                echo '                    <label for="email" class="form__floating-label">Email</label>';
+                                                echo '               </div>';
+                                                echo '              <button type="submit" class="form__submit button dark" id="form_submit-recover">Khôi phục</button>';
+                                                echo '            </form>';
+                                                echo '          <div class="site_account_secondary-action">';
+                                                echo '              <p>Bạn đã nhớ mật khẩu?';
+                                                echo '                 <button aria-controls="header-login-panel" class="js-link link">Trở về đăng';
+                                                echo '                     nhập</button>';
+                                                echo '              </p>';
+                                                echo '           </div>';
+                                                echo '       </div>';
+                                                echo '   </div>';
+                                                echo ' </div>';
+                                                echo '</div>';
+                                            }
 
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="email" id="login-customer[email]" class="form__field form__field--text" name="customer[email]" required="required">
-                                                                    <label for="login-customer[email]" class="form__floating-label">Email</label>
-                                                                </div>
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="password" id="login-customer[password]" class="form__field form__field--text" name="customer[password]" required="required" autocomplete="current-password">
-                                                                    <label for="login-customer[password]" class="form__floating-label">Mật
-                                                                        khẩu</label>
+                                            ?>
 
-                                                                   
-                                                                </div>
-                                                                <button type="submit" class="form__submit button dark" id="form_submit-login">Đăng nhập</button>
 
-                                                          
-                                                            </form>
-                                                            <div class="site_account_secondary-action">
-                                                                <p>Khách hàng mới?
-                                                                    <a class="link" href="/MVC/controller/userController.php?controller=registerUserGET">Tạo tài
-                                                                        khoản</a>
-                                                                </p>
-                                                                <p>Quên mật khẩu?
-                                                                    <button aria-controls="header-recover-panel" class="js-link link">Khôi phục mật
-                                                                        khẩu</button>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="header-recover-panel" class="site_account_panel  site_account_sliding">
-                                                        <div class="site_account_header">
-                                                            <h2 class="site_account_title heading">Khôi phục mật
-                                                                khẩu</h2>
-                                                            <p class="site_account_legend">Nhập email của bạn:</p>
-                                                        </div>
-                                                        <div class="site_account_inner">
-                                                            <form accept-charset='UTF-8' action='/account/recover' method='post'>
-                                                                <input name='form_type' type='hidden' value='recover_customer_password'>
-                                                                <input name='utf8' type='hidden' value='✓'>
-
-                                                                <div class="form__input-wrapper form__input-wrapper--labelled">
-                                                                    <input type="email" id="recover-customer[recover_email]" class="form__field form__field--text" name="email" required="required">
-                                                                    <label for="recover-customer[recover_email]" class="form__floating-label">Email</label>
-                                                                    <div class="sitebox-recaptcha">
-                                                                        This site is protected by reCAPTCHA and the
-                                                                        Google
-                                                                        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Privacy
-                                                                            Policy</a>
-                                                                        and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms
-                                                                            of Service</a> apply.
-                                                                    </div>
-                                                                </div>
-                                                                <button type="submit" class="form__submit button dark" id="form_submit-recover">Khôi phục</button>
-
-                                                                <input id='77848e987a0b4e7c99a1978de559d11d' name='g-recaptcha-response' type='hidden'><noscript data-src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></noscript><noscript>grecaptcha.ready(function()
-                                                                    {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-',
-                                                                    {action: 'submit'}).then(function(token)
-                                                                    {document.getElementById('77848e987a0b4e7c99a1978de559d11d').value
-                                                                    = token;});});</noscript>
-                                                            </form>
-                                                            <div class="site_account_secondary-action">
-                                                                <p>Bạn đã nhớ mật khẩu?
-                                                                    <button aria-controls="header-login-panel" class="js-link link">Trở về đăng
-                                                                        nhập</button>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                         </div>
                                     </div>
@@ -4242,7 +4247,15 @@
                                                     </svg>
                                                 </span>
                                                 <span class="count-holder">
-                                                    <span class="count">2</span> 
+                                                    <?php
+                                                    if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+
+                                                        echo ' <span class="count">' . count($_SESSION["cart"]) . '</span>';
+                                                    } else {
+                                                        echo ' <span class="count">0</span>';
+                                                    }
+                                                    ?>
+
                                                     <!-- cart ammout -->
                                                 </span>
                                             </span>
@@ -4265,29 +4278,34 @@
                                                         <div class="cart-view-scroll">
                                                             <table id="clone-item-cart" class="table-clone-cart">
                                                                 <tbody>
-                                                                    
+
                                                                 </tbody>
                                                             </table>
                                                             <table id="cart-view">
                                                                 <tbody>
-                                                                    <tr class="item_2">
-                                                                        <td class="img"><a href="/products/ao-so-mi-diluc-genshin-impact" title="/products/ao-so-mi-diluc-genshin-impact"><img src="//product.hstatic.net/200000588991/product/c66d1a84-4891-4e9b-8164-411b936810a4_631b9bd59f0143bb87cc27ad0c68952f_small.jpeg" alt="/products/ao-so-mi-diluc-genshin-impact"></a></td>
-                                                                        <td>
-                                                                            <p class="pro-title">
-                                                                                <a class="pro-title-view" href="/products/ao-so-mi-diluc-genshin-impact" title="/products/ao-so-mi-diluc-genshin-impact">Áo sơ mi Diluc Genshin Impact</a>
-                                                                                <span class="variant">Xám / XS</span>
-                                                                            </p>
-                                                                            <div class="mini-cart_quantity">
-                                                                                <div class="pro-quantity-view"><span class="qty-value">1</span></div>
-                                                                                <div class="pro-price-view">1,370,000₫</div>
-                                                                            </div>
-                                                                            <div class="remove_link remove-cart"><a href="javascript:void(0);" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-                                                                                        <g>
-                                                                                            <path d="M500,442.7L79.3,22.6C63.4,6.7,37.7,6.7,21.9,22.5C6.1,38.3,6.1,64,22,79.9L442.6,500L22,920.1C6,936,6.1,961.6,21.9,977.5c15.8,15.8,41.6,15.8,57.4-0.1L500,557.3l420.7,420.1c16,15.9,41.6,15.9,57.4,0.1c15.8-15.8,15.8-41.5-0.1-57.4L557.4,500L978,79.9c16-15.9,15.9-41.5,0.1-57.4c-15.8-15.8-41.6-15.8-57.4,0.1L500,442.7L500,442.7z"></path>
-                                                                                        </g>
-                                                                                    </svg></a></div>
-                                                                        </td>
-                                                                    </tr>
+                                                                    <?php
+                                                                    if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                                                                        foreach ($_SESSION['cart'] as $itemcart) {
+                                                                            echo ' <tr class="item_2"> ';
+                                                                            echo '    <td class="img"><a href="/MVC/controller/productController.php?controller=productDetailId&value=' . $itemcart['idproduct'] . '" title="' . $itemcart['name'] . '"><img src="' . $itemcart['image'] . '" alt=""></a></td>';
+                                                                            echo '    <td>';
+                                                                            echo '       <p class="pro-title">';
+                                                                            echo '            <a class="pro-title-view" href="/MVC/controller/productController.php?controller=productDetailId&value=' . $itemcart['idproduct'] . '" title="' . $itemcart['name'] . '">' . $itemcart['name'] . '</a>';
+                                                                            // echo '             <span class="variant">Xám / XS</span>';
+                                                                            echo '         </p>';
+                                                                            echo '         <div class="mini-cart_quantity">';
+                                                                            echo '            <div class="pro-quantity-view"><span class="qty-value">' . $itemcart['quantity'] . '</span></div>';
+                                                                            echo '            <div class="pro-price-view"> ' . number_format($itemcart['quantity'] * $itemcart['price'], 0, '.', '.') . 'đ' . ' </div>';
+                                                                            echo '        </div>';
+                                                                            echo '        <div class="remove_link remove-cart"><a href="/MVC/controller/productController.php?controller=RemoveCart&id=' . $itemcart['idproduct'] . '"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">';
+                                                                            echo '                   <g>';
+                                                                            echo '                       <path d="M500,442.7L79.3,22.6C63.4,6.7,37.7,6.7,21.9,22.5C6.1,38.3,6.1,64,22,79.9L442.6,500L22,920.1C6,936,6.1,961.6,21.9,977.5c15.8,15.8,41.6,15.8,57.4-0.1L500,557.3l420.7,420.1c16,15.9,41.6,15.9,57.4,0.1c15.8-15.8,15.8-41.5-0.1-57.4L557.4,500L978,79.9c16-15.9,15.9-41.5,0.1-57.4c-15.8-15.8-41.6-15.8-57.4,0.1L500,442.7L500,442.7z"></path>';
+                                                                            echo '                   </g>';
+                                                                            echo '               </svg></a></div>';
+                                                                            echo '   </td>';
+                                                                            echo '  </tr>';
+                                                                        }
+                                                                    } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -4297,11 +4315,19 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="text-left">TỔNG TIỀN:</td>
-                                                                        <td class="text-right" id="total-view-cart">1,370,000₫</td>
+                                                                        <?php 
+                                                                        if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0){
+                                                                            $totalmoney = 0;
+                                                                            foreach ($_SESSION['cart'] as $item) {
+                                                                                $totalmoney += $item['price'] * $item['quantity'];
+                                                                              }
+                                                                            echo ' <td class="text-right" id="total-view-cart">' . number_format($totalmoney, 0, '.', '.') . 'đ' . '</td> ';
+                                                                        }else echo' <td class="text-right" id="total-view-cart">0đ</td>';
+                                                                        ?>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="/cart" class="linktocart button dark">Xem giỏ hàng</a></td>
-                                                                        <td><a href="/checkout" class="linktocheckout button dark">Thanh toán</a></td>
+                                                                        <td><a href="/MVC/controller/productController.php?controller=indexCartGET" class="linktocart button dark">Xem giỏ hàng</a></td>
+                                                                        <td><a href="/MVC/controller/productController.php?controller=checkoutCart" class="linktocheckout button dark">Thanh toán</a></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

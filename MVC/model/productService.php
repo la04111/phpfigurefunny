@@ -133,7 +133,7 @@ class productService
           'Note' =>  $p->GetNote(),
           'DateRelease' => $p->GetDateRelease(),
           'ProductStatus' => $p->GetProductStatus(),
-          'Price' => (float)$p->GetPrice(),
+          'Price' => (double)$p->GetPrice(),
           'Stock' => (int)$p->GetStock(),
           'Infor' => $p->GetInfor()
         ]]

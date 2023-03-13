@@ -54,11 +54,11 @@ class Users {
     }
     public function GetPassword()
     {
-        return md5($this->Password);
+        return $this->Password;
     }
     public function SetPassword($Password)
     {
-      $this->Password = md5($Password);
+      $this->Password = $Password;
 
     }
     public function GetRoles()

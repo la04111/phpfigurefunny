@@ -22,7 +22,7 @@ class UserService
     {
         $user = $this->dbcollectionuser->findOne([
             "email" => $email,
-            "password" => $password
+            "password" => md5($password)
         ]);
         if (!is_null($user)) {
 
@@ -30,6 +30,19 @@ class UserService
         } else {
 
             return false;
+        }
+    }
+    //Find user with email
+    public function findEmail($email)
+    {
+        $findEmail = $this->dbcollectionuser->findOne([
+            "email" => $email
+        ]);
+        
+        if ($findEmail['email'] != null) {
+            return $findEmail;
+        } else {
+            return  false;
         }
     }
     //// C R U    USER
@@ -44,7 +57,7 @@ class UserService
         } else {
             $newUser = [
                 "email" => $u->GetEmail(),
-                "password" => $u->GetPassword(),
+                "password" => md5($u->GetPassword()),
                 "roles" => "customer",
                 "phonenum" => $u->GetPhonenum(),
                 "address" => $u->GetAddress(),
@@ -68,11 +81,11 @@ class UserService
         $update = [
             '$set' => [
                 "email" => $u->GetEmail(),
-                "password" => $u->GetPassword(),
+                "password" => md5($u->GetPassword()),
                 "roles" => "customer",
                 "phonenum" => $u->GetPhonenum(),
                 "address" => $u->GetAddress(),
-                "id" => 1,
+                "id" => (int)1,
                 "firstname" => $u->GetFirstName(),
                 "lastname" => $u->GetLastName()
             ]
