@@ -2835,7 +2835,14 @@
                                             <input autocomplete="false" placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input"  type="text" id="address" name="address" value="' . $user['address'] . '" />
                                         </div>
 
-                                    </div>
+                                        </div>
+                                        <div class="field field-required   ">
+                                        <div class="field-input-wrapper">
+                                            <label class="field-label" for="billing_address_phone">Ghi chú</label>
+                                            <input autocomplete="false" placeholder="Ghi chú" autocapitalize="off" spellcheck="false" class="field-input"  type="text" id="note" name="note" value="" />
+                                        </div>
+
+                                        </div>
                                     </div>';
                                     } else {
                                         echo ' <p class="section-content-text">';
@@ -2878,8 +2885,14 @@
                                             <input autocomplete="false" placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input"  type="text" id="address" name="address" value="" />
                                         </div>
 
+                                     </div>
+                                    <div class="field field-required   ">
+                                    <div class="field-input-wrapper">
+                                        <label class="field-label" for="billing_address_phone">Ghi chú</label>
+                                        <input autocomplete="false" placeholder="Ghi chú" autocapitalize="off" spellcheck="false" class="field-input"  type="text" id="note" name="note" value="" />
                                     </div>
 
+                                    </div>
                                     </div>';
                                     }
                                     ?>
@@ -2965,6 +2978,7 @@
             var email = $('#email').val();
             var phonenum = $('#phonenum').val(); // get the input value
             var address = $('#address').val();
+            var note = $('#note').val();
             $.ajax({
                 url: 'productController.php?controller=checkoutCartPOST',
                 type: 'POST',
@@ -2972,7 +2986,8 @@
                     firtnamelastname : firtnamelastname,
                     email:email,
                     phonenum: phonenum,
-                    address:address
+                    address:address,
+                    note:note
 
                 },
                 success: function(response) {

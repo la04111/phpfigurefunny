@@ -10,6 +10,7 @@ class Bill{
     private $emailcustomer;
     private $phonenum;
     private $status;
+    private $total;
 
     public function GetIDBill()
     {
@@ -90,6 +91,14 @@ class Bill{
     public function SetStatus($status)
     {
       $this->status = $status;
+    }
+    public function GetTotal()
+    {
+       return $this->total;
+    }
+    public function SetTotal($total)
+    {
+      $this->total = $total;
     }
 
 }

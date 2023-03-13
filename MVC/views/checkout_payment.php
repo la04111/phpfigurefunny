@@ -2677,7 +2677,7 @@
             <div class="main">
                 <div class="main-header">
 
-                    <a href="/" class="logo">
+                    <a href="#" class="logo">
 
                         <h1 class="logo-text">RY Order</h1>
 
@@ -2899,12 +2899,12 @@
             e.preventDefault(); // prevent default form submission
     
             $.ajax({
-                url: 'productController.php?controller=checkoutCartPOST',
+                url: 'productController.php?controller=checkoutPaymentPOST',
                 type: 'POST',
                
                 success: function(response) {
                     // handle success response from the server
-                    window.location.href = "/MVC/controller/productController.php?controller=checkoutPaymentGET";
+                    window.location.href = "/MVC/controller/productController.php?controller=indexProductGET";
                 },
                 error: function(xhr, status, error) {
                     // handle error response from the server
