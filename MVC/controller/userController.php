@@ -12,14 +12,18 @@ require '../../vendor/phpmailer/src/SMTP.php';
 // require_once(__DIR__.'/../../phpconnectmongodb.php');
 require_once('../model/userclass.php');
 require_once('../model/userService.php');
-
-
+require_once('../model/billService.php');
+require_once('../model/productService.php');
 class userController
 {
     public $userService;
+    public $billService;
+    public $productService;
     public function __construct()
     {
         $this->userService = new UserService();
+        $this->billService = new billService();
+        $this->productService = new productService();
     }
     public function SetUser()
     {
@@ -235,6 +239,43 @@ class userController
             echo '<script>alert("Không tồn tại Email hoặc sai Email!");</script>';
         }
     }
+    //GET BILL USER BUY
+    public function indexUser()
+    {
+      $getbill = $this->billService->getBillEmaill($_SESSION['accountuser']['email']);
+    //   foreach ($getbill as $document) {
+    //     echo $id = $document['idbill'];
+    //  }
+       include '../views/infor_user.php';
+    }
+    //INFOR BILL
+    public function billInfor()
+    {
+        $id = $_GET['id'];
+       
+        if (empty($_SESSION['inforbill']) || !isset($_SESSION['inforbill'])) {
+            $_SESSION['inforbill'] = array();
+        }else unset( $_SESSION['inforbill']);
+        $getlistdetailbill = $this->billService->getBillDetail($id);
+        $getinforbill = $this->billService->getBill($id);
+        
+        foreach ($getlistdetailbill as $document) {
+            $new_item = array(
+
+                'idproduct' => $document['idproduct'],
+                'name' => $document['productname'],
+                'price' => $document['price'],
+                'image' => $this->productService->findOneImageIdProduct($document['idproduct']),
+                'quantity' => $document['quantity']
+             
+              
+            );   //echo $document['idproduct'];
+            $_SESSION['inforbill'][] = $new_item;
+
+           
+        }
+        include '../views/bill_user.php';
+    }
 }
 ///////////////////////////////////////
 $classuser = new userController();
@@ -264,7 +305,10 @@ if (isset($_GET['controller'])) {
     }
     //INFOR USER GET
     if ($controller == "inforUserGET") {
-        $url = "/MVC/views/infor_user.php";
-        header("Location: " . $url);
+        $getbills = $classuser->indexUser();
+    }
+    // BIL INFOR
+    if ($controller == "billInfor") {
+        $getbills = $classuser->billInfor();
     }
 } else       $classuser->loginUserGET();

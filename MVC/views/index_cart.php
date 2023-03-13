@@ -173,9 +173,9 @@ include 'header.php';
                                         Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
                                 </div>
                                 <div class="sidebox-order_action">
-                                    <a class="button dark btncart-checkout">THANH TOÁN</a>
+                                    <a href="/MVC/controller/productController.php?controller=checkoutCart" class="button dark btncart-checkout">THANH TOÁN</a>
                                     <p class="link-continue text-center">
-                                        <a href="/collections/all">
+                                        <a href="/MVC/controller/productController.php">
                                             <i class="fa fa-reply"></i> Tiếp tục mua hàng
                                         </a>
                                     </p>

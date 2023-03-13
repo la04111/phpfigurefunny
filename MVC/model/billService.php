@@ -23,6 +23,30 @@ class billService
         }
         return (int)$id + 1;
     }
+    public function getBillDetail($idbillObject)
+    {
+
+        $result = $this->dbcollectionbilldetail->find(["idbill" => (int)$idbillObject]);
+       
+        return $result;
+    }
+    public function getBill($idbillObject)
+    {
+
+        $result = $this->dbcollectionbill->findOne(["idbill" =>(int) $idbillObject]);
+       
+        return $result;
+    }
+    public function getBillEmaill($email)
+    {
+
+        $result = $this->dbcollectionbill->find(
+            ["emailcustomer" => $email],
+            ['sort' => ['idbill' => -1], 'limit' => 5]
+        );
+       
+        return $result;
+    }
     // CREATE BILL
     public function addBill(Bill $b)
     {
@@ -34,10 +58,11 @@ class billService
                 'idbill' => (int)$b->GetIDBill(),
                 'note' => $b->GetNote(),
                 'datebuy' => (string)$date,
+                'addressdelivery' => (string)$b->GetAddressdelivery(),
                 'emailcustomer' => $b->GetEmailcustomer(),
                 'phonenum' =>  $b->GetPhonenum(),
                 'totalbill' => (double)$b->GetTotal(),
-                'status' => 'init'
+                'status' => 'Chờ xử lý'
             ];
 
             $this->dbcollectionbill->insertOne($bill);

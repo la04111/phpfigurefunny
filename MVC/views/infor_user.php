@@ -30,12 +30,12 @@ include 'header.php';
                             <?php
                             if (isset($_SESSION['accountuser'])) {
                                 $user = $_SESSION['accountuser'];
-                                echo '  <h2 class="name_account">'.$user['firstname']. $user['lastname'].'</h2> ';
-                                echo '  <p class="email ">'.$user['email'].'</p';
+                                echo '  <h2 class="name_account">' . "Họ và tên: " . $user['firstname'] . " " . $user['lastname'] . '</h2> ';
+                                echo '  <p class="email ">Email: ' . $user['email'] . '</p';
                                 echo ' <div class="address ">';
                                 echo '   <p></p>';
                                 echo '   <p></p>';
-                                echo '  <p> '.$user['address'].'</p>';
+                                echo '  <p> Địa chỉ:' . $user['address'] . '</p>';
                                 echo '  <p></p>';
                             }
                             ?>
@@ -46,7 +46,52 @@ include 'header.php';
                     <div class="col-xs-12 customer-table-wrap" id="customer_orders">
                         <div class="customer_order customer-table-bg">
 
+                            <p class="title-detail">
+                                Danh sách đơn hàng mới nhất
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="order_number text-center">Mã đơn hàng</th>
+                                            <th class="date text-center">Ngày đặt</th>
+                                            <th class="total text-right">Thành tiền</th>
+                                            <th class="payment_status text-center">Trạng thái thanh toán</th>
+                                            <th class="fulfillment_status text-center">Vận chuyển</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+
+                                        if (isset($getbill)) {
+                                            foreach ($getbill as $document) {
+                                                echo '
+                                            <tr class="odd ">
+                                                <td class="text-center"><a href="/MVC/controller/userController.php?controller=billInfor&id=' . $document['idbill'] . '" title="">#' . $document['idbill'] . '</a></td>
+                                                <td class="text-center"><span>' . $document['datebuy'] . '</span></td>
+                                                <td class="text-right"><span class="total money">' . number_format($document['totalbill'], 0, '.', '.') . 'đ' . '</span></td>
+                                                <td class="text-center"><span class="status_pending">' . $document['status'] . '</span></td>
+                                                <td class="text-center"><span class="status_not fulfilled status_pending">
+                                                    
+                                                ' . $document['status'] . '
+                                                    </span>
+                                                </td>
+                                            </tr>';
+                                            }
+                                        } else {
+                                            echo ' <div class="col-xs-12 customer-table-wrap" id="customer_orders">
+                        <div class="customer_order customer-table-bg">
+
                             <p>Bạn chưa đặt mua sản phẩm.</p>
+
+                        </div>
+                    </div>';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
 
                         </div>
                     </div>
@@ -61,4 +106,7 @@ include 'header.php';
 </main>
 <?php //fotter page here --
 include 'footer.php';
+?>
+<?php //js page here --
+include 'sctript_indexjs.php';
 ?>

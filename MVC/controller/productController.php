@@ -143,11 +143,13 @@ class productController
         $email = $_POST['email'];
         $phonenum = $_POST['phonenum'];
         $address = $_POST['address'];
+        $note  =$_POST['note'];
 
         $_SESSION['customercheckout']['firtnamelastname'] = $firtnamelastname;
         $_SESSION['customercheckout']['email'] = $email;
         $_SESSION['customercheckout']['phonenum'] = $phonenum;
         $_SESSION['customercheckout']['address'] = $address;
+        $_SESSION['customercheckout']['note'] =$note;
     }
     public function checkoutPaymentGET()
     {
@@ -160,7 +162,7 @@ class productController
         $phoneNumber = $_SESSION['customercheckout']['phonenum'];
         $address = $_SESSION['customercheckout']['address'];
         $note = $_SESSION['customercheckout']['note'];
-        if ($note == null) $note = "";
+
         $newbill = new Bill();
         $tempbillid = $this->billService->getIdaddBill();
         $newbill->SetIDBill($tempbillid);
@@ -203,13 +205,13 @@ class productController
                         } else $tempupdateproductstock->SetStock("0");
                         $tempupdateproductstock->SetInfor($updatestock['Infor']);
                         $this->productService->updateProduct($tempupdateproductstock);
-                       
                     }
                 }
             }
             $this->sendmailpayment($email, $tempbillid, $firstName);
             unset($_SESSION['cart']);
             unset($_SESSION['customercheckout']);
+            $_SESSION['tempidbill'] = $tempbillid;
         }
     }
     //SEND MAIL  PAYMENT 
@@ -420,8 +422,8 @@ class productController
                     $bodys .= "  <tr>
                     <td
                         style='font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,&quot;Roboto&quot;,&quot;Oxygen&quot;,&quot;Ubuntu&quot;,&quot;Cantarell&quot;,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif'>
-
-                        <img src='". $itemcart['image'] ."'
+     
+                        <img src='" . $itemcart['image'] . "'
                             align='left'
                             width='60'
                             height='60'
@@ -437,8 +439,8 @@ class productController
 
 
                         <span
-                            style='font-size:16px;font-weight:600;line-height:1.4;color:#555'>".$itemcart['name']." ×
-                            ". $itemcart['quantity'] ."</span><br>
+                            style='font-size:16px;font-weight:600;line-height:1.4;color:#555'>" . $itemcart['name'] . " ×
+                            " . $itemcart['quantity'] . "</span><br>
 
                     </td>
                     <td
@@ -446,7 +448,7 @@ class productController
 
                         <p
                             style='margin:0;color:#555;line-height:150%;font-size:16px;font-weight:600;text-align:right;margin-left:15px'>
-                            ". number_format($itemcart['quantity'] * $itemcart['price'], 0, '.', '.') . 'đ' ."</p>
+                            " . number_format($itemcart['quantity'] * $itemcart['price'], 0, '.', '.') . 'đ' . "</p>
                     </td>
                 </tr>";
                 }
@@ -486,13 +488,13 @@ class productController
                                                                                                             style='font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,&quot;Roboto&quot;,&quot;Oxygen&quot;,&quot;Ubuntu&quot;,&quot;Cantarell&quot;,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;text-align:right;padding:5px 0'>
                                                                                                             <strong
                                                                                                                 style='font-size:16px;color:#555'>";
-                                                                                                                if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0){
-                                                                                                                    $totalmoney = 0;
-                                                                                                                    foreach ($_SESSION['cart'] as $item) {
-                                                                                                                        $totalmoney += $item['price'] * $item['quantity'];
-                                                                                                                      }
-                                                                                                                    }
-                                                                                                $bodys.= " ". number_format($totalmoney, 0, '.', '.') . 'đ' ."</strong>
+            if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                $totalmoney = 0;
+                foreach ($_SESSION['cart'] as $item) {
+                    $totalmoney += $item['price'] * $item['quantity'];
+                }
+            }
+            $bodys .= " " . number_format($totalmoney, 0, '.', '.') . 'đ' . "</strong>
                                                                                                         </td>
                                                                                                     </tr>
         
@@ -551,7 +553,7 @@ class productController
                                                                                                         <td
                                                                                                             style='font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,&quot;Roboto&quot;,&quot;Oxygen&quot;,&quot;Ubuntu&quot;,&quot;Cantarell&quot;,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;text-align:right;padding:20px 0 0'>
                                                                                                             <strong
-                                                                                                                style='font-size:24px;color:#555'>". number_format($totalmoney, 0, '.', '.') . 'VND' ."
+                                                                                                                style='font-size:24px;color:#555'>" . number_format($totalmoney, 0, '.', '.') . 'VND' . "
                                                                                                                 </strong>
                                                                                                         </td>
                                                                                                     </tr>
@@ -731,6 +733,37 @@ class productController
             echo "Error encountered: " . $mail->ErrorInfo;
         }
     }
+    // THANKS YOU
+    public function ThankYou()
+    {
+        if (empty($_SESSION['thankyou']) || !isset($_SESSION['thankyou'])) {
+            $_SESSION['thankyou'] = array();
+        } else unset($_SESSION['thankyou']);
+
+        $id = $_SESSION['tempidbill'];
+        $getlistdetailbill = $this->billService->getBillDetail($id);
+        $getinforbill = $this->billService->getBill($id);
+
+        foreach ($getlistdetailbill as $document) {
+            $new_item = array(
+                //   'idbill' => $temp_idbillcart,
+                'idproduct' => $document['idproduct'],
+                'name' => $document['productname'],
+                'price' => $document['price'],
+                'image' => $this->productService->findOneImageIdProduct($document['idproduct']),
+                'quantity' => $document['quantity']
+                // 'note' => $notecart,
+                //'datebuy' => date('d/m/Y H:i:s'),
+                // 'addressdelivery' => $addressdelivery,
+                // 'emailcustomer' => $customer_cart['email'],
+                //'phonenum' => $customer_cart['phonenum']
+
+            );
+            $_SESSION['thankyou'][] = $new_item;
+        }
+
+        include('../views/thank_you.php');
+    }
 } //test
 $classproduct = new productController();
 if (isset($_GET['controller'])) {
@@ -769,6 +802,9 @@ if (isset($_GET['controller'])) {
     }
     if ($controller == "checkoutPaymentPOST") {
         $classproduct->checkoutPaymentPOST();
+    }
+    if ($controller == "ThankYou") {
+        $classproduct->ThankYou();
     }
 } else   $classproduct->getAllProductIndex();
 

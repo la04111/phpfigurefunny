@@ -2992,11 +2992,12 @@
                 },
                 success: function(response) {
                     // handle success response from the server
+                   
                     window.location.href = "/MVC/controller/productController.php?controller=checkoutPaymentGET";
                 },
                 error: function(xhr, status, error) {
                     // handle error response from the server
-                    alert('Xem lai thong tin !');
+                    window.location.href = "/MVC/controller/productController.php?controller=checkoutPaymentGET";
                 }
             });
         });

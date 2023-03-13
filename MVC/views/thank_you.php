@@ -2571,8 +2571,8 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-                                            foreach ($_SESSION['cart'] as $itemcart) {
+                                        if (isset($_SESSION['thankyou']) && is_array($_SESSION['thankyou'])) {
+                                            foreach ($_SESSION['thankyou'] as $itemcart) {
                                                 echo '  <tr class="product" >
                                            <td class="product-image">
                                               <div class="product-thumbnail">
@@ -2621,9 +2621,9 @@
                                                 <span class="order-summary-emphasis">
 
                                                     <?php
-                                                    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                                                    if (isset($_SESSION['thankyou']) && count($_SESSION['thankyou']) > 0) {
                                                         $totalmoney = 0;
-                                                        foreach ($_SESSION['cart'] as $item) {
+                                                        foreach ($_SESSION['thankyou'] as $item) {
                                                             $totalmoney += $item['price'] * $item['quantity'];
                                                         }
                                                         echo number_format($totalmoney, 0, '.', '.') . 'đ';
@@ -2654,9 +2654,9 @@
                                                 <span class="payment-due-currency">VND</span>
                                                 <span class="payment-due-price">
                                                     <?php
-                                                    if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                                                    if (isset($_SESSION['thankyou']) && count($_SESSION['thankyou']) > 0) {
                                                         $totalmoney = 0;
-                                                        foreach ($_SESSION['cart'] as $item) {
+                                                        foreach ($_SESSION['thankyou'] as $item) {
                                                             $totalmoney += $item['price'] * $item['quantity'];
                                                         }
                                                         echo number_format($totalmoney, 0, '.', '.') . 'đ';
@@ -2675,220 +2675,143 @@
                 </div>
             </div>
             <div class="main">
-                <div class="main-header">
+							<div class="main-header">
+							
+								<a href="/MVC/controller/productController.php?controller=indexProductGET" class="logo">
+									
+										<h1 class="logo-text">Fingure Funny Order</h1>   
+										
+								</a>
+							
+							<style>
+							a.logo{display: block;}
+											.logo-cus{ 
+												width: 100%; padding: 15px 0; 
+												
+											}
+											.logo-cus img{ max-height: 4.2857142857em  }
+											
+											.logo-text{
+												
+											}
+											
+								            @media (max-width: 767px){
+												.banner a{ display: block; }
+											}
+							</style>
 
-                    <a href="#" class="logo">
-
-                        <h1 class="logo-text">RY Order</h1>
-
-                    </a>
-
-                    <style>
-                        a.logo {
-                            display: block;
-                        }
-
-                        .logo-cus {
-                            width: 100%;
-                            padding: 15px 0;
-
-                        }
-
-                        .logo-cus img {
-                            max-height: 4.2857142857em
-                        }
-
-                        .logo-text {}
-
-                        @media (max-width: 767px) {
-                            .banner a {
-                                display: block;
-                            }
-                        }
-                    </style>
-
-
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="/MVC/controller/productController.php?controller=indexCartGET">Giỏ hàng</a>
-                        </li>
-
-                        <li class="breadcrumb-item ">
-
-                            <a href="/MVC/controller/productController.php?controller=checkoutCart" class="breadcrumb-link">
-
-                                Thông tin giao hàng
-
-                            </a>
-
-                        </li>
-                        <li class="breadcrumb-item breadcrumb-item-current">
-
-                            Phương thức thanh toán
-
-                        </li>
-
-                    </ul>
-
-                </div>
-                <div class="main-content">
-
-
-                    <div id="checkout_order_information_changed_error_message" class="hidden" style="margin-bottom:15px">
-
-
-
-                        <p class="field-message field-message-error alert alert-danger"><svg x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve">
-                                <g>
-                                    <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027 c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236 c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209 S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972 c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723 c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843 C160.878,195.732,152.878,187.723,143.036,187.723z"></path>
-                                </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                                <g> </g>
-                            </svg>
-                            <span>
-
-
-
-                            </span>
-
-                        </p>
-                    </div>
-                    <script>
-                        $("html, body").animate({
-                            scrollTop: 0
-                        }, "slow");
-                    </script>
-
-
-                    <div class="step">
-
-                        <div class="step-sections " step="2">
-
-
-
-
-
-                            <div id="section-shipping-rate" class="section">
-                                <div class="order-checkout__loading--box">
-                                    <div class="order-checkout__loading--circle"></div>
-                                </div>
-                                <div class="section-header">
-                                    <h2 class="section-title">Phương thức vận chuyển</h2>
-                                </div>
-                                <div class="section-content">
-
-                                    <div class="content-box">
-
-                                        <div class="content-box-row">
-                                            <div class="radio-wrapper">
-                                                <label class="radio-label" for="shipping_rate_id_1000257783">
-                                                    <div class="radio-input">
-                                                        <input id="shipping_rate_id_1000257783" class="input-radio" type="radio" name="shipping_rate_id" value="1000257783" checked="">
-                                                    </div>
-                                                    <span class="radio-label-primary">Giao hàng tận nơi</span>
-                                                    <span class="radio-accessory content-box-emphasis">
-
-                                                        0₫
-
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div id="section-payment-method" class="section">
-                                <div class="order-checkout__loading--box">
-                                    <div class="order-checkout__loading--circle"></div>
-                                </div>
-                                <div class="section-header">
-                                    <h2 class="section-title">Phương thức thanh toán</h2>
-                                </div>
-                                <div class="section-content">
-                                    <div class="content-box">
-
-
-                                        <div class="radio-wrapper content-box-row">
-                                            <label class="two-page" for="payment_method_id_1003354037">
-                                                <div class="radio-input payment-method-checkbox">
-                                                    <input type-id="2" id="payment_method_id_1003354037" class="input-radio" name="payment_method_id" type="radio" value="1003354037" checked="">
-                                                </div>
-
-                                                <div class="radio-content-input">
-                                                    <img class="main-img" src="https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=4">
-                                                    <div class="content-wrapper">
-                                                        <span class="radio-label-primary">Chuyển khoản qua ngân hàng</span>
-                                                        <span class="quick-tagline hidden"></span>
-                                                        <span class="quick-tagline  hidden ">Buy Now, Pay Later
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="radio-wrapper content-box-row content-box-row-secondary " for="payment_method_id_1003354037">
-                                            <div class="blank-slate">
-                                                Tên chủ tài khoản : NGUYEN QUOC TIEN
-                                                Số tài khoản : 102869990655
-                                                Ngân hàng : Vietinbank
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="step-footer" id="step-footer-checkout">
-
-
-
-
-                            <input name="form_type" type="hidden" value="checkout">
-                            <input name="utf8" type="hidden" value="✓">
-                            <input name="data_type" type="hidden" value="liquid">
-                            <button id="submit-btn" type="button" class="step-footer-continue-btn btn">
-                                <span class="btn-content">Hoàn tất đơn hàng</span>
-                                <i class="btn-spinner icon icon-button-spinner"></i>
-                            </button>
-
-
-                            </form> <a class="step-footer-previous-link" href="/MVC/controller/productController.php?controller=indexCartGET">
-                                Giỏ hàng
-                            </a>
-
-
-
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="hrv-coupons-popup-site-overlay"></div>
-                <div class="main-footer footer-powered-by">Powered by Haravan</div>
-            </div>
+								
+							</div>
+							<div class="main-content">
+								
+																			
+								
+										<div>
+											<div class="section">
+												<div class="section-header os-header">
+													
+														<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000" stroke-width="2" class="hanging-icon checkmark"><path class="checkmark_circle" d="M25 49c13.255 0 24-10.745 24-24S38.255 1 25 1 1 11.745 1 25s10.745 24 24 24z"></path><path class="checkmark_check" d="M15 24.51l7.307 7.308L35.125 19"></path></svg>
+													
+													<div class="os-header-heading">
+														<h2 class="os-header-title">
+															
+																Đặt hàng thành công
+															
+														</h2>
+														<span class="os-order-number">
+															Mã đơn hàng #<?php echo $_SESSION['tempidbill']?>
+														</span>
+														
+															<span class="os-description">
+																Cám ơn bạn đã mua hàng!
+															</span>
+														
+													</div>
+												</div>
+											</div>
+											
+												
+											
+											<div class="section thank-you-checkout-info">
+												<div class="section-content">
+													<div class="content-box">
+														<div class="content-box-row content-box-row-padding content-box-row-no-border">
+															<h2>Thông tin đơn hàng</h2>
+														</div>
+														<div class="content-box-row content-box-row-padding">
+															<div class="section-content">
+																<div class="section-content-column">
+																<h3>Thông tin giao hàng</h3>
+																
+																				<?php echo $getinforbill['note']?>
+																				<br>
+																
+																	
+																
+																				<?php echo $getinforbill['phonenum']?>
+																				<br>
+																					
+																
+																
+																	
+																
+																		<p>
+																			
+																				
+																			
+																			
+																			
+																				
+																			
+                                                                        <?php echo $getinforbill['addressdelivery']?>
+																				<br>
+																			
+																			
+																			
+																		</p>
+																	
+																	
+																	
+																		<h3>Phương thức thanh toán</h3>
+																		<p>
+																			
+																				Chuyển khoản qua ngân hàng
+																			
+																		</p>
+																	
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="step-footer">
+												
+													<a href="/MVC/controller/productController.php" class="step-footer-continue-btn btn">
+														<span class="btn-content">Tiếp tục mua hàng</span>
+													</a>
+												
+												<p class="step-footer-info">
+													<i class="icon icon-os-question"></i>
+													<span>
+														
+														
+														Cần hỗ trợ? <a href="mailto:longan04111@gmail.com">Liên hệ chúng tôi</a>
+													</span>
+												</p>
+											</div>
+										</div>
+									
+								
+							</div>
+							
+							<div class="hrv-coupons-popup-site-overlay"></div>
+							<div class="main-footer footer-powered-by">Powered by Haravan</div>
+						</div>
         </div>
 
     </div>
-    <input type="hidden" id="tempidbill" value="<?php echo $_SESSION['tempidbill'] ?>">
+
 
 </body>
 
@@ -2897,22 +2820,18 @@
     $(document).ready(function() {
         $('#submit-btn').click(function(e) {
             e.preventDefault(); // prevent default form submission
-            var tempidbill = $('#tempidbill').val();
+    
             $.ajax({
                 url: 'productController.php?controller=checkoutPaymentPOST',
                 type: 'POST',
                
                 success: function(response) {
-                    
                     // handle success response from the server
-                   
-                    window.location.href = `/MVC/controller/productController.php?controller=ThankYou&id=${tempidbill}`;
-                   
+                    window.location.href = "/MVC/controller/productController.php?controller=indexProductGET";
                 },
                 error: function(xhr, status, error) {
                     // handle error response from the server
-             
-                    window.location.href = `/MVC/controller/productController.php?controller=ThankYou&id=${tempidbill}`;
+                    alert('Xem lai thong tin !');
                 }
             });
         });
