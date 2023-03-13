@@ -100,7 +100,7 @@ class userController
             $mail->Port = 465;
             $mail->SMTPAuth = true;
             $mail->Username = 'tiennguyen558.tn@gmail.com';
-            $mail->Password = 'uvatpwumgxhrjhkk';
+            $mail->Password = 'jqwnvarqphujghxc';
             $mail->SMTPSecure = 'ssl'; //Enable SSL encryption
 
             //Set recipient(s)
@@ -196,14 +196,16 @@ class userController
             . "<div class='yj6qo'></div>"
             . "</div>"; //body
             $mail->isHTML(true);
-            $mail->send();
+           
             //Send the message, check for errors
-            // if () {
-            //     echo "Mail sent!";
-            // } else {
-            //     echo "Error encountered: " . $mail->ErrorInfo;
-            // }
+            if ( !$mail->send()) {
+               // $_SESSION['error_message'] = "123";
+            } else {
+                // $_SESSION['error_message'] = "Kiểm tra lại thông tin đăng ký hoặc Email đã tồn tại trong hệ thống.";
+            }
+          
         } catch (Exception $e) {
+          
             echo "Error encountered: " . $mail->ErrorInfo;
         }
     }
@@ -259,5 +261,10 @@ if (isset($_GET['controller'])) {
     //FORGOT PASSWORD
     if ($controller == "ForgotPassWordPOST") {
         $classuser->ForgotPassWordPOST();
+    }
+    //INFOR USER GET
+    if ($controller == "inforUserGET") {
+        $url = "/MVC/views/infor_user.php";
+        header("Location: " . $url);
     }
 } else       $classuser->loginUserGET();

@@ -56,7 +56,7 @@ include 'header.php';
                     echo ' <span class="pro-price">  ' . number_format($result_productId["Price"], 0, '.', '.') . 'đ' . '  </span> ';
                     echo ' </div> ';
 
-                    echo ' <form id="add-item-form" action="" method="post" class="variants clearfix"> ';
+                    echo ' <form id="add-item-form" action="/MVC/controller/productController.php?controller=addProductCartPOST&id='.$result_productId['ProductID'].'" method="post" class="variants clearfix"> ';
                     echo ' <div class="selector-actions"> ';
                     echo ' <div class="module-wrap-sizes"> ';
                     echo ' <div class="box-item"> ';
@@ -80,8 +80,8 @@ include 'header.php';
 
 
                     //button buy
-                    echo ' <button type="button" id="add-to-cart" class="add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add"> Thêm vào giỏ  </button> ';
-                    echo ' <button type="button" id="buy-now" class="add-to-cartProduct button dark btn-addtocart addtocart-modal hidden" name="add" style="display: inline-block;"> Mua ngay  </button> ';
+                    echo ' <button type="submit" id="add-to-cart" class="add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add"> Thêm vào giỏ  </button> ';
+                    echo ' <button type="submit" id="buy-now" class="add-to-cartProduct button dark btn-addtocart addtocart-modal hidden" name="add" style="display: inline-block;"> Mua ngay  </button> ';
                     echo ' </div> ';
                     echo ' </div> ';
 
