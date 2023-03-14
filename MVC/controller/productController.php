@@ -39,10 +39,10 @@ class productController
         //if not login {}
         //$customer_cart = $_SESSION['accountuser'];
         $product_idcart = $_GET['id'];
-      
-        if(!isset($_SESSION['cart'])){
+
+        if (!isset($_SESSION['cart'])) {
             $quantity = $_POST['quantity'];
-        }else {
+        } else {
             $quantity = 1;
         }
         // $notecart = $_POST['note'];
@@ -773,14 +773,20 @@ class productController
     public function SearchProduct()
     {
         $searchcontent = $_GET['searchproduct'];
-        $result_search = $this->productService->findName($searchcontent);
+        $limit = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $limit;
         $counts = $this->productService->findName($searchcontent);
-            $count = 0;
-            foreach ($counts as $document) {
-                $count++;
-            }
-         
-       
+
+        $count = 0;
+        foreach ($counts as $document) {
+            $count++;
+        }
+
+        $total_pages = ceil((float)$count / (float)$limit);
+
+        $result_search = $this->productService->findNameSearch($searchcontent, $start, $limit);
+
 
 
         include '../views/search_product.php';

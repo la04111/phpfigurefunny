@@ -16,10 +16,10 @@ include 'header.php';
                     echo ' <div class="product-gallery__thumbs thumb-fix"> ';
                     $callproductService = new productService();
                     $result_images  = $callproductService->findOneImageIdProductIdSort($result_productId['ProductID']);
-                    $counthidden = 0;
+                   // $counthidden = 0;
                     foreach ($result_images as $item) {
                         if (!empty($item)) {
-                            $count ++;
+                           // $count ++;
                           
                             echo ' <div class="product-gallery__thumb"> ';
                             echo ' <a class="product-gallery__thumb-placeholder" rel="nofollow" href="javascript:" data-image="' . $callproductService->findOneImageIdProduct($result_productId['ProductID']) . '" data-zoom-image="' . $callproductService->findOneImageIdProduct($result_productId['ProductID']) . '"> ';
@@ -31,7 +31,7 @@ include 'header.php';
                             echo ' </div> ';
                         }
                     }
-                    echo '<input data-counthidden ="' . $count . '"/>';
+                  //  echo '<input data-counthidden ="' . $count . '"/>';
                     echo ' </div> ';
                     echo ' </div> ';
                     echo ' <div class="product-image-detail box__product-gallery scroll"> ';
@@ -238,6 +238,7 @@ include 'header.php';
                                     echo '                   </p>';
                                     echo '               </div>';
                                     echo '               <div class="product-actions">';
+                                    echo '<form accept-charset="UTF-8" action="/MVC/controller/productController.php?controller=addProductCartPOST&id='.$seri['ProductID'].'"  method="post">';
                                     echo '                 <button class="proLoop-addtocart" >';
                                     echo '                     <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">';
                                     echo '                          <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">';
@@ -248,7 +249,7 @@ include 'header.php';
                                     echo '                          </g>';
                                     echo '                        </svg>';
                                     echo '                       <span>Thêm vào giỏ hàng</span>';
-                                    echo '                 </button>';
+                                    echo '                 </button></form>';
                                     echo '               </div>';
                                     echo '          </div>';
                                     echo '     </div>';

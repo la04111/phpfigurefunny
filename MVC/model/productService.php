@@ -109,6 +109,18 @@ class productService
     }
     return (int)$id + 1;
   }
+  public function findNameSearch($name,$start,$limit)
+  {
+    $filter = ["ProductName" => ['$regex' => $name, '$options' => 'i']];
+
+    // set options for sorting and limiting
+    $options = [
+        'skip' => $start,
+        'limit' => $limit
+    ];
+    $result_name = $this->dbcollectionproduct->find($filter, $options);
+    return $result_name;
+  }
   public function findName($name)
   {
 
