@@ -4086,10 +4086,10 @@
                                             <div class="site_search">
 
                                                 <div class="search-box wpo-wrapper-search">
-                                                    <form action="/search" class="searchform searchform-categoris ultimate-search">
+                                                    <form action="/MVC/controller/productController.php?controller=SearchProduct" class="searchform searchform-categoris ultimate-search">
                                                         <div class="wpo-search-inner">
-                                                            <input type="hidden" name="type" value="product" />
-                                                            <input required id="inputSearchAuto" name="q" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                                                   
+                                                            <input required  name="searchproduct" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                                                         </div>
                                                         <button type="submit" class="btn-search btn" id="search-header-btn" aria-label="Tìm kiếm">
                                                             <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
@@ -4099,9 +4099,7 @@
                                                             </svg>
                                                         </button>
                                                     </form>
-                                                    <div id="ajaxSearchResults" class="smart-search-wrapper ajaxSearchResults" style="display: none">
-                                                        <div class="resultsContent"></div>
-                                                    </div>
+                                                  
                                                 </div>
                                             </div>
                                         </div>

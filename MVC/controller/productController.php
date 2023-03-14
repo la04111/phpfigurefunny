@@ -143,13 +143,13 @@ class productController
         $email = $_POST['email'];
         $phonenum = $_POST['phonenum'];
         $address = $_POST['address'];
-        $note  =$_POST['note'];
+        $note  = $_POST['note'];
 
         $_SESSION['customercheckout']['firtnamelastname'] = $firtnamelastname;
         $_SESSION['customercheckout']['email'] = $email;
         $_SESSION['customercheckout']['phonenum'] = $phonenum;
         $_SESSION['customercheckout']['address'] = $address;
-        $_SESSION['customercheckout']['note'] =$note;
+        $_SESSION['customercheckout']['note'] = $note;
     }
     public function checkoutPaymentGET()
     {
@@ -764,8 +764,25 @@ class productController
 
         include('../views/thank_you.php');
     }
+    //SEARCH GET POST
+    public function SearchProduct()
+    {
+        $searchcontent = $_GET['searchproduct'];
+        $result_search = $this->productService->findName($searchcontent);
+        $counts = $this->productService->findName($searchcontent);
+            $count = 0;
+            foreach ($counts as $document) {
+                $count++;
+            }
+         
+       
+
+
+        include '../views/search_product.php';
+    }
 } //test
 $classproduct = new productController();
+//else    $classproduct->getAllProductIndex();
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 
@@ -806,7 +823,13 @@ if (isset($_GET['controller'])) {
     if ($controller == "ThankYou") {
         $classproduct->ThankYou();
     }
-} else   $classproduct->getAllProductIndex();
+} else {
+    //SEARCH
+    if (isset($_GET['searchproduct'])) {
+        $classproduct->SearchProduct();
+    } else $classproduct->getAllProductIndex();
+}
+
 
 
   

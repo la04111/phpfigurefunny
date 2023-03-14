@@ -1,4 +1,5 @@
 <?php
+
 //require_once(__DIR__ . '/productclass.php');
 //require_once(__DIR__ . '/phpconnectmongodb.php');
 require_once('productclass.php');
@@ -111,9 +112,7 @@ class productService
   public function findName($name)
   {
 
-    $result_name = $this->dbcollectionproduct->find([
-      "ProductName" => ['$regex' => $name]
-    ]);
+    $result_name = $this->dbcollectionproduct->find([ "ProductName" => ['$regex' => $name, '$options' => 'i'] ]);
     return $result_name;
   }
   public function findOneId($id)
