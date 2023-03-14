@@ -67,7 +67,8 @@
                                                             </p>
                                                         </div>
                                                         <div class="product-actions">
-                                                            <button class="proLoop-addtocart">
+                                                        <form accept-charset="UTF-8" action="/MVC/controller/productController.php?controller=addProductCartPOST&id='.$itemcart['ProductID'].'"  method="post">
+                                                            <button type="submit" data-product-id="' . $itemcart['ProductID'] . '"  class="proLoop-addtocart btn-addcart" id="btn-addcart">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24.000000pt" height="24.000000pt" viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
                                                                     <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                                                                         <path d="M63 194 c-9 -14 -27 -30 -40 -35 -22 -8 -32 -44 -14 -51 4 -1 15 -23 23 -48 l15 -45 73 0 73 0 15 45 c8 25 19 47 24 48 17 7 7 43 -15 51 -13 5 -31 21 -40 35 -10 14 -22 26 -28 26 -6 0 -1 -12 11 -27 l22 -28 -31 -3 c-17 -2 -45 -2 -62 0 l-31 3 22 28 c12 15 17 27 11 27 -6 0 -18 -12 -28 -26z m114 -61 c-31 -2 -83 -2 -115 0 -31 2 -5 3 58 3 63 0 89 -1 57 -3z m21 -63 l-10 -40 -68 0 -68 0 -10 40 -10 40 88 0 88 0 -10 -40z"></path>
@@ -78,6 +79,7 @@
                                                                 </svg>
                                                                 <span>Thêm vào giỏ hàng</span>
                                                             </button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,6 +113,51 @@
         </div>
     </div>
     <script>
+        // var addToCartBtn = $("#btn-addcart");
+        // addToCartBtn.on("click", function() {
+        //     // Send an AJAX GET request
+        //     var productId = $(this).data('product-id');
+        //     $.ajax({
+        //         url: 'productController.php?controller=index',
+        //         data: {
+
+        //         },
+        //         type: 'POST',
+        //         success: function(response) {
+        //             alert("hmm"+productId);
+        //             //location.reload(); //reload page after successful update
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown) {
+        //             console.log(textStatus, errorThrown);
+        //             alert('An error occurred while updating cart.');
+        //         }
+        //     });
+        // });
+
+
+
+        // $(document).on('change', '.btn-addcart', function(e) {
+        //     e.preventDefault();
+        //     // var productId = $(this).data('product-id');
+        //     // var quantity = $(this).val();
+
+        //     // alert(productId + quantity);
+        //     $.ajax({
+        //         url: 'productController.php?controller=index',
+        //         data: {
+
+        //         },
+        //         type: 'POST',
+        //         success: function(response) {
+        //             alert("hehe");
+        //             //location.reload(); //reload page after successful update
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown) {
+        //             console.log(textStatus, errorThrown);
+        //             alert('An error occurred while updating cart.');
+        //         }
+        //     });
+        // });
         $('form.search-page').submit(function(e) {
             e.preventDefault();
             var q = $(this).find('input[type="text"]').val();

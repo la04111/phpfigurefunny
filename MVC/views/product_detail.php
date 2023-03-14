@@ -16,8 +16,11 @@ include 'header.php';
                     echo ' <div class="product-gallery__thumbs thumb-fix"> ';
                     $callproductService = new productService();
                     $result_images  = $callproductService->findOneImageIdProductIdSort($result_productId['ProductID']);
+                    $counthidden = 0;
                     foreach ($result_images as $item) {
                         if (!empty($item)) {
+                            $count ++;
+                          
                             echo ' <div class="product-gallery__thumb"> ';
                             echo ' <a class="product-gallery__thumb-placeholder" rel="nofollow" href="javascript:" data-image="' . $callproductService->findOneImageIdProduct($result_productId['ProductID']) . '" data-zoom-image="' . $callproductService->findOneImageIdProduct($result_productId['ProductID']) . '"> ';
                             //img
@@ -28,6 +31,7 @@ include 'header.php';
                             echo ' </div> ';
                         }
                     }
+                    echo '<input data-counthidden ="' . $count . '"/>';
                     echo ' </div> ';
                     echo ' </div> ';
                     echo ' <div class="product-image-detail box__product-gallery scroll"> ';

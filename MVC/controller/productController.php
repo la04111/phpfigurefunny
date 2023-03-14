@@ -39,7 +39,12 @@ class productController
         //if not login {}
         //$customer_cart = $_SESSION['accountuser'];
         $product_idcart = $_GET['id'];
-        $quantity = $_POST['quantity'];
+      
+        if(!isset($_SESSION['cart'])){
+            $quantity = $_POST['quantity'];
+        }else {
+            $quantity = 1;
+        }
         // $notecart = $_POST['note'];
         // $addressdelivery = $_POST['addressdelivery'];
         if (empty($_SESSION['cart']) || !isset($_SESSION['cart'])) {
