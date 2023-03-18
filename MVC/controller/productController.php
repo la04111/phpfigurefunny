@@ -791,6 +791,35 @@ class productController
 
         include '../views/search_product.php';
     }
+    //Get SERIES
+    public function SeriesView()
+    {
+       $getseri = $_GET['seri'];
+       if($getseri == 'honkai'){
+        $searchcontent = "Honkai Impact 3";
+       } else
+       if($getseri == 'genshin'){
+        $searchcontent = "Genshin Impact";
+       } else  $searchcontent = "Khác";
+     
+        $limit = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $limit;
+        $counts = $this->productService->countSeri($searchcontent);
+
+        $count = 0;
+        foreach ($counts as $document) {
+            $count++;
+        }
+
+        $total_pages = ceil((float)$count / (float)$limit);
+
+        $result_search = $this->productService->findSeries($searchcontent, $start, $limit);
+
+
+
+        include '../views/series_product.php';
+    }
 } //test
 $classproduct = new productController();
 //else    $classproduct->getAllProductIndex();
@@ -833,6 +862,9 @@ if (isset($_GET['controller'])) {
     }
     if ($controller == "ThankYou") {
         $classproduct->ThankYou();
+    }
+    if ($controller == "SeriGET") {
+        $classproduct->SeriesView();
     }
 } else {
     //SEARCH

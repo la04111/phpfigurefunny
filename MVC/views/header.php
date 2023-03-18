@@ -3832,219 +3832,27 @@
                                         <ul class="clearfix">
 
 
+
                                             <li class="">
-                                                <a href="/collections/honkai-impact" title="Honkai Impact 3">
-                                                    Honkai Impact 3
-                                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                                <a href="/MVC/controller/productController.php?controller=SeriGET&seri=honkai" title="Honkai impact 3">
+                                                    Sản phẩm Honkai impact 3
                                                 </a>
-                                                <ul class="sub_menu">
+                                            </li>
 
-
-                                                    <li class="">
-                                                        <a href="/collections/san-pham-honkai" title="Sản phẩm Honkai">
-                                                            Sản phẩm Honkai <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                                        </a>
-                                                        <ul class="sub_menu">
-
-
-                                                            <li class="">
-                                                                <a href="/collections/gift-box" title="Gift box">
-                                                                    Gift box
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/thiet-bi-dien-tu-honkai" title="Thiết bị điện tử / kết nối">
-                                                            Thiết bị điện tử / kết nối
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/trang-phuc-chu-de-honkai" title="Trang phục chủ để Honkai">
-                                                            Trang phục chủ để Honkai
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/mo-hinh-nendoroid" title="Mô hình / Nendoroid">
-                                                            Mô hình / Nendoroid <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                                        </a>
-                                                        <ul class="sub_menu">
-
-
-                                                            <li class="">
-                                                                <a href="/collections/mihoyo-hoyoverse" title="miHoYo / HoYoverse">
-                                                                    miHoYo / HoYoverse
-                                                                </a>
-                                                            </li>
-
-
-
-                                                            <li class="">
-                                                                <a href="/collections/studio-khac" title="Studio khác">
-                                                                    Studio khác
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </li>
-
-
-                                                </ul>
+                                            <li class="">
+                                                <a href="/MVC/controller/productController.php?controller=SeriGET&seri=genshin" title="Sản phẩm Genshin Impact">
+                                                    Sản phẩm Genshin Impact
+                                                </a>
                                             </li>
 
 
 
-                                            <li class="">
-                                                <a href="/collections/genshin-impact" title="Genshin Impact">
-                                                    Genshin Impact
-                                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                                </a>
-                                                <ul class="sub_menu">
 
-
-                                                    <li class="">
-                                                        <a href="/collections/san-pham-genshin" title="Sản phẩm Genshin">
-                                                            Sản phẩm Genshin <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                                        </a>
-                                                        <ul class="sub_menu">
-
-
-                                                            <li class="">
-                                                                <a href="/collections/gift-box-g" title="Gift box">
-                                                                    Gift box
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/g-thiet-bi-dien-tu-ket-noi" title="Thiết bị điện tử / kết nối">
-                                                            Thiết bị điện tử / kết nối
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/trang-phuc-chu-de-genshin" title="Trang phục chủ để Genshin">
-                                                            Trang phục chủ để Genshin <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                                        </a>
-                                                        <ul class="sub_menu">
-
-
-                                                            <li class="">
-                                                                <a href="/collections/g-mihoyo-hoyoverse" title="miHoYo / HoYoverse">
-                                                                    miHoYo / HoYoverse
-                                                                </a>
-                                                            </li>
-
-
-
-                                                            <li class="">
-                                                                <a href="/collections/g-studio-khac" title="Studio khác">
-                                                                    Studio khác
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/mo-hinh-nendoroid-1" title="Mô hình / Nendoroid">
-                                                            Mô hình / Nendoroid <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                                        </a>
-                                                        <ul class="sub_menu">
-
-
-                                                            <li class="">
-                                                                <a href="/collections/gi-mihoyo-hoyoverse" title="miHoYo / HoYoverse">
-                                                                    miHoYo / HoYoverse
-                                                                </a>
-                                                            </li>
-
-
-
-                                                            <li class="">
-                                                                <a href="/collections/gi-studio-khac" title="Studio khác">
-                                                                    Studio khác
-                                                                </a>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/genshin-khac" title="Sản phẩm Genshin khác">
-                                                            Sản phẩm Genshin khác
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                            </li>
 
 
 
                                             <li class="">
-                                                <a href="/collections/manga-anime-game-khac" title="Manga / Anime / Game khác">
-                                                    Manga / Anime / Game khác
-                                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                                </a>
-                                                <ul class="sub_menu">
-
-
-                                                    <li class="">
-                                                        <a href="/collections/nendoroid" title="Nendoroid">
-                                                            Nendoroid
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/mo-hinh-pvc-1" title="Mô hình PVC">
-                                                            Mô hình PVC
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li class="">
-                                                        <a href="/collections/mo-hinh-resin" title="Mô hình Resin">
-                                                            Mô hình Resin
-                                                        </a>
-                                                    </li>
-
-
-                                                </ul>
-                                            </li>
-
-
-
-                                            <li class="">
-                                                <a href="/collections/san-pham-moi" title="Sản phẩm mới">
+                                                <a href="/MVC/controller/productController.php?controller=SeriGET&seri=khác" title="Sản phẩm mới">
                                                     Sản phẩm mới
                                                 </a>
                                             </li>
@@ -4088,8 +3896,8 @@
                                                 <div class="search-box wpo-wrapper-search">
                                                     <form action="/MVC/controller/productController.php?controller=SearchProduct" class="searchform searchform-categoris ultimate-search">
                                                         <div class="wpo-search-inner">
-                                                   
-                                                            <input required  name="searchproduct" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+
+                                                            <input required name="searchproduct" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                                                         </div>
                                                         <button type="submit" class="btn-search btn" id="search-header-btn" aria-label="Tìm kiếm">
                                                             <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
@@ -4099,7 +3907,7 @@
                                                             </svg>
                                                         </button>
                                                     </form>
-                                                  
+
                                                 </div>
                                             </div>
                                         </div>
@@ -4313,14 +4121,14 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="text-left">TỔNG TIỀN:</td>
-                                                                        <?php 
-                                                                        if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0){
+                                                                        <?php
+                                                                        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
                                                                             $totalmoney = 0;
                                                                             foreach ($_SESSION['cart'] as $item) {
                                                                                 $totalmoney += $item['price'] * $item['quantity'];
-                                                                              }
+                                                                            }
                                                                             echo ' <td class="text-right" id="total-view-cart">' . number_format($totalmoney, 0, '.', '.') . 'đ' . '</td> ';
-                                                                        }else echo' <td class="text-right" id="total-view-cart">0đ</td>';
+                                                                        } else echo ' <td class="text-right" id="total-view-cart">0đ</td>';
                                                                         ?>
                                                                     </tr>
                                                                     <tr>

@@ -1,18 +1,39 @@
 <?php
 require_once('../model/productclass.php');
 require_once('../model/productService.php');
-
+require_once('../model/billService.php');
 class adminController
 {
 
     public $productService;
+    public $billService;
     public function __construct()
     {
         $this->productService = new ProductService();
+        $this->billService = new billService();
     }
     // Index
     public function LoadIndex()
     {
+        $countbilltoday = $this->billService->countBilltoday();
+        $countstock = $this->billService->countStock();
+        $countbillwait = $this->billService->countBillwait();
+        $top5 = $this->billService->bestsellertop5();
+        $idtemp = 0;
+        foreach ($top5 as $row) {
+            $_SESSION['topseller'.$idtemp] = $this->productService->findOneId($row['_id'])['ProductName'];
+            $_SESSION['quantityseller'.$idtemp] = $row['quantity'];
+            $idtemp++;
+        }
+       
+       for($id =$idtemp ; $id < 5;$id++){
+        //echo $id;
+        $_SESSION['topseller'.$id] = "";
+        $_SESSION['quantityseller'.$id] = 0;
+
+       }
+
+ 
         include '../view_admin/index_admin.php';
     }
     /////////////////////////////////////////

@@ -25,7 +25,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>${neworderbill_count}<!-- <sup style="font-size: 20px">
+              <h3><?php 
+              echo $countbilltoday;
+              ?><!-- <sup style="font-size: 20px">
 										đơn</sup> -->
               </h3>
 
@@ -40,10 +42,31 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>
+                <?php 
+                echo $countbillwait;
+                ?><!-- <sup style="font-size: 20px">
+										tài khoản</sup> -->
+              </h3>
+
+              <p>Đơn hàng chờ xử lý</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="${pageContext.request.contextPath }/admin/customer" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
               <h3>
-                ${countoutstock}<!-- <sup style="font-size: 20px"> Sản phẩm</sup> -->
+               <?php
+               echo $countstock;
+               ?><!-- <sup style="font-size: 20px"> Sản phẩm</sup> -->
               </h3>
 
               <p>Số lượng sản phẩm còn dưới 10 cái</p>
@@ -55,22 +78,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>${customer_count}<!-- <sup style="font-size: 20px">
-										tài khoản</sup> -->
-              </h3>
-
-              <p>Tổng khách hàng</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="${pageContext.request.contextPath }/admin/customer" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+      
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -191,32 +199,30 @@
 
 <!-- /.content-wrapper -->
 <?php include 'footer_admin.php'; ?>
-<script>
-  //-------------
-  //- DONUT CHART -
-  //-------------
-  // Get context with jQuery - using jQuery's .get() method.
-  var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+<?php 
+echo '<script>
+var donutChartCanvas = $("#donutChart").get(0).getContext("2d")
 
-  var donutData = {
-    labels: ['${bestsellername1}', '${bestsellername2}',
-      '${bestsellername3}', '${bestsellername4}',
-      '${bestsellername5}',
-    ],
-    datasets: [{
-      data: [700, 500, 400, 600, 300, 100],
-      backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-    }]
-  }
-  var donutOptions = {
-    maintainAspectRatio: false,
-    responsive: true,
-  }
-  //Create pie or douhnut chart
-  // You can switch between pie and douhnut using the method below.
-  new Chart(donutChartCanvas, {
-    type: 'doughnut',
-    data: donutData,
-    options: donutOptions
-  })
-</script>
+var donutData = {
+  labels: ["'.$_SESSION['topseller0'].'", "'.$_SESSION['topseller1'].'",
+    "'.$_SESSION['topseller2'].'", "'.$_SESSION['topseller3'].'", "'.$_SESSION['topseller4'].'"
+  ],
+  datasets: [{
+    data: ['.$_SESSION['quantityseller0'].', '.$_SESSION['quantityseller1'].', '.$_SESSION['quantityseller2'].', 
+    '.$_SESSION['quantityseller3'].', '.$_SESSION['quantityseller4'].'],
+    backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#d2d6de"],
+  }]
+}
+var donutOptions = {
+  maintainAspectRatio: false,
+  responsive: true,
+}
+//Create pie or douhnut chart
+// You can switch between pie and douhnut using the method below.
+new Chart(donutChartCanvas, {
+  type: "doughnut",
+  data: donutData,
+  options: donutOptions
+})
+</script>';
+?>
