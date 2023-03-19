@@ -2896,6 +2896,7 @@
 <script>
     $(document).ready(function() {
         $('#submit-btn').click(function(e) {
+            document.getElementById("submit-btn").setAttribute("disabled", "true");
             e.preventDefault(); // prevent default form submission
             var tempidbill = $('#tempidbill').val();
             $.ajax({

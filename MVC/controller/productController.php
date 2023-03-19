@@ -39,7 +39,12 @@ class productController
         //if not login {}
         //$customer_cart = $_SESSION['accountuser'];
         $product_idcart = $_GET['id'];
-        $quantity = $_POST['quantity'];
+
+        if (!isset($_SESSION['cart'])) {
+            $quantity = $_POST['quantity'];
+        } else {
+            $quantity = 1;
+        }
         // $notecart = $_POST['note'];
         // $addressdelivery = $_POST['addressdelivery'];
         if (empty($_SESSION['cart']) || !isset($_SESSION['cart'])) {
@@ -143,13 +148,13 @@ class productController
         $email = $_POST['email'];
         $phonenum = $_POST['phonenum'];
         $address = $_POST['address'];
-        $note  =$_POST['note'];
+        $note  = $_POST['note'];
 
         $_SESSION['customercheckout']['firtnamelastname'] = $firtnamelastname;
         $_SESSION['customercheckout']['email'] = $email;
         $_SESSION['customercheckout']['phonenum'] = $phonenum;
         $_SESSION['customercheckout']['address'] = $address;
-        $_SESSION['customercheckout']['note'] =$note;
+        $_SESSION['customercheckout']['note'] = $note;
     }
     public function checkoutPaymentGET()
     {
@@ -764,8 +769,60 @@ class productController
 
         include('../views/thank_you.php');
     }
+    //SEARCH GET POST
+    public function SearchProduct()
+    {
+        $searchcontent = $_GET['searchproduct'];
+        $limit = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $limit;
+        $counts = $this->productService->findName($searchcontent);
+
+        $count = 0;
+        foreach ($counts as $document) {
+            $count++;
+        }
+
+        $total_pages = ceil((float)$count / (float)$limit);
+
+        $result_search = $this->productService->findNameSearch($searchcontent, $start, $limit);
+
+
+
+        include '../views/search_product.php';
+    }
+    //Get SERIES
+    public function SeriesView()
+    {
+       $getseri = $_GET['seri'];
+       if($getseri == 'honkai'){
+        $searchcontent = "Honkai Impact 3";
+       } else
+       if($getseri == 'genshin'){
+        $searchcontent = "Genshin Impact";
+       } else  $searchcontent = "Khác";
+     
+        $limit = 10;
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $start = ($page - 1) * $limit;
+        $counts = $this->productService->countSeri($searchcontent);
+
+        $count = 0;
+        foreach ($counts as $document) {
+            $count++;
+        }
+
+        $total_pages = ceil((float)$count / (float)$limit);
+
+        $result_search = $this->productService->findSeries($searchcontent, $start, $limit);
+
+
+
+        include '../views/series_product.php';
+    }
 } //test
 $classproduct = new productController();
+//else    $classproduct->getAllProductIndex();
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 
@@ -806,7 +863,16 @@ if (isset($_GET['controller'])) {
     if ($controller == "ThankYou") {
         $classproduct->ThankYou();
     }
-} else   $classproduct->getAllProductIndex();
+    if ($controller == "SeriGET") {
+        $classproduct->SeriesView();
+    }
+} else {
+    //SEARCH
+    if (isset($_GET['searchproduct'])) {
+        $classproduct->SearchProduct();
+    } else $classproduct->getAllProductIndex();
+}
+
 
 
   

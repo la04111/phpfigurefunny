@@ -133,7 +133,7 @@
     const CLOUDINARY_UPLOAD_PRESET = 'r2wkhf6u';
     const image = document.querySelector('#fileupload');
     image.addEventListener('change', (e) => {
-        document.getElementById("myButton").setAttribute("disabled", "true");
+       // document.getElementById("myButton").setAttribute("disabled", "true");
         document.getElementById('image1').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
         document.getElementById('image2').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
         document.getElementById('image3').src = "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
@@ -197,7 +197,7 @@
                         }
                         // alert(i + ' ' +length);
                         // if (i == length - 1) {
-                        document.getElementById("myButton").removeAttribute("disabled");
+                       // document.getElementById("myButton").removeAttribute("disabled");
                         //     }
                     } else {
                         alert('upload thất bại');

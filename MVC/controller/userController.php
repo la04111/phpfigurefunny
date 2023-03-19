@@ -53,6 +53,7 @@ class userController
     public function loginUserPOST()
     {
         $result_loginUserPOST = $this->userService->findUserWithEmailandPassword($_POST['email'], $_POST['password']);
+        unset($_SESSION['accountuser']);
         if ($result_loginUserPOST == false) {
             header("Location: " . $_SERVER['HTTP_REFERER']);
             $_SESSION['error_message'] = "Sai mật khẩu hoặc tài khoản không tồn tại trong hệ thống.";

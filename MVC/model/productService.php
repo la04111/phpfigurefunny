@@ -1,4 +1,5 @@
 <?php
+
 //require_once(__DIR__ . '/productclass.php');
 //require_once(__DIR__ . '/phpconnectmongodb.php');
 require_once('productclass.php');
@@ -19,7 +20,6 @@ class productService
 
     $result = $this->dbcollectionproduct->find([]);
     return $result;
-
   }
   // IMAGE  GET
   public function getImagewithID($id)
@@ -37,7 +37,6 @@ class productService
     if (!empty($result_image))
       return $result_image['Image'];
     else return "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
- 
   }
   public function findOneImageIdProductIdSort($id)
   {
@@ -108,12 +107,22 @@ class productService
     }
     return (int)$id + 1;
   }
+  public function findNameSearch($name, $start, $limit)
+  {
+    $filter = ["ProductName" => ['$regex' => $name, '$options' => 'i']];
+
+    // set options for sorting and limiting
+    $options = [
+      'skip' => $start,
+      'limit' => $limit
+    ];
+    $result_name = $this->dbcollectionproduct->find($filter, $options);
+    return $result_name;
+  }
   public function findName($name)
   {
 
-    $result_name = $this->dbcollectionproduct->find([
-      "ProductName" => ['$regex' => $name]
-    ]);
+    $result_name = $this->dbcollectionproduct->find(["ProductName" => ['$regex' => $name, '$options' => 'i']]);
     return $result_name;
   }
   public function findOneId($id)
@@ -133,7 +142,7 @@ class productService
           'Note' =>  $p->GetNote(),
           'DateRelease' => $p->GetDateRelease(),
           'ProductStatus' => $p->GetProductStatus(),
-          'Price' => (double)$p->GetPrice(),
+          'Price' => (float)$p->GetPrice(),
           'Stock' => (int)$p->GetStock(),
           'Infor' => $p->GetInfor()
         ]]
@@ -187,10 +196,30 @@ class productService
     // printf(" Success Inserted %d document(s)\n", $insertOneResult->getInsertedCount());
 
   }
+  // GET LIST WITH SERIES 
+  public function findSeries($name, $start, $limit)
+  {
+    $filter = ["Series" => ['$regex' => $name, '$options' => 'i']];
+
+    // set options for sorting and limiting
+    $options = [
+      'skip' => $start,
+      'limit' => $limit
+    ];
+    $result_name = $this->dbcollectionproduct->find($filter, $options);
+    return $result_name;
+  }
+  public function countSeri($name)
+  {
+
+    $result_name = $this->dbcollectionproduct->find(["Series" => ['$regex' => $name, '$options' => 'i']]);
+    return $result_name;
+  }
   //GET LIST PRODUCT WITH Series
   public function GetSeries($Seri)
   {
     $result_SeriresList = $this->dbcollectionproduct->find(["Series" => $Seri]);
     return $result_SeriresList;
   }
+
 }
