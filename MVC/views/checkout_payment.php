@@ -2888,7 +2888,7 @@
         </div>
 
     </div>
-    <input type="hidden" id="tempidbill" value="<?php echo $_SESSION['tempidbill'] ?>">
+    <input type="hidden" id="tempidbill" value="<?php  $_SESSION['tempidbill'] ?>">
 
 </body>
 

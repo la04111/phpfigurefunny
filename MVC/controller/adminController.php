@@ -27,6 +27,8 @@ class adminController
         $countstock = $this->billService->countStock();
         $countbillwait = $this->billService->countBillwait();
         $top5 = $this->billService->bestsellertop5();
+        $sumbill = $this->billService->sumBilltoday();
+        $get5bill = $this->billService->getBilllimit5();
         $idtemp = 0;
         foreach ($top5 as $row) {
             $_SESSION['topseller' . $idtemp] = $this->productService->findOneId($row['_id'])['ProductName'];

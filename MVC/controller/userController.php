@@ -58,10 +58,15 @@ class userController
             header("Location: " . $_SERVER['HTTP_REFERER']);
             $_SESSION['error_message'] = "Sai mật khẩu hoặc tài khoản không tồn tại trong hệ thống.";
         } else {
-           
+
             $_SESSION['accountuser'] = $result_loginUserPOST;
-            $url = "/MVC/controller/productController.php";
-            header("Location: " . $url);
+            if ($result_loginUserPOST['roles'] == 'admin') {
+                $url = "/MVC/controller/adminController.php";
+                header("Location: " . $url);
+            } else {
+                $url = "/MVC/controller/productController.php";
+                header("Location: " . $url);
+            }
         }
     }
     //Controller REGISTER GET - POST
@@ -115,102 +120,101 @@ class userController
             //Set email body
             $mail->Subject = '[FigureFunny] Khôi phục mật khẩu của bạn'; // tieu de
             //
-         
+
             $mail->CharSet = 'UTF-8';
             //
             $mail->Body = "<div id=':33' class='ii gt' jslog='20277; u014N:xr6bB; 4:W251bGwsbnVsbCxbXV0.'>"
-            . "<div id=':32' class='a3s aiL '>"
-            . "<u>" . "</u>" . "<div>"
-            . "<div style='width:800px;text-align:center;margin:0 auto'>"
-            . "<table align='center' width='800' height='1000' cellpadding='0' cellspacing='0' border='0' style='background:#A77979'>"
-            . "<tbody>"
-            . "<tr>"
-            . "<td align='center' valign='top' style='background:url(https://wallpapercave.com/uwp/uwp2052576.jpeg)'>"
-            . "<table width='576' cellpadding='0' cellspacing='0' border='0'>"
-            . "<tbody>"
-            . "<tr>"
-            . "<td height='250'>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td align='left' valign='top' style='color:#fff'>"
-            . "<font color='#e35b5b' style='font-size:26px'>"
-            . "<strong>"
-            . "Gửi khách hàng:"
-            . "<br>"
-            . "Đây đây là mật khẩu của bạn, vui lòng nhập vào:"
-            . "</strong>"
-            . "</font>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='40' valign='top'>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td align='center' height='54' style='background:#202121;letter-spacing:15px;color:#ffffff'>"
-            . "<font size='6' color='#FFFFFF'>"
-            // code here
-            . $ps
-            . "</font>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='40' valign='top'>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td valign='top' style='color:#e35b5b'>"
-            . "<font size='4' color='#e35b5b'>"
-            . "Mọi thắc mắc vui lòng gửi email "
-            . "<a href='mailto:longan04111@gmail.com ' target='_blank'>"
-            . "longan04111@gmail.com"
-            . "</a>"
-            . "để biết thêm thông tin."
-            . "Nếu bạn không có thắc mắc nào, vui lòng đừng gửi thư rác!"
-            . "</font>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='40' valign='top'>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='60' valign='top' style='color:#e35b5b'>"
-            . "<font size='4' color='#e35b5b'>Một ngày tốt lành！</font>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='50' valign='top' style='color:#e35b5b'>"
-            . "<font size='5' color='#e35b5b'><strong>TN<strong></font>"
-            . "</td>"
-            . "</tr>"
-            . "<tr>"
-            . "<td height='100%'>"
-            . "</td>"
-            . "</tr>"
-            . "</tbody>"
-            . "</table>"
-            . "</td>"
-            . "</tr>"
-            . "</tbody>"
-            . "</table>"
-            . "</div>"
-            . "</div>"
-            . "</div>"
-            . "<div class='yj6qo'></div>"
-            . "</div>"; //body
+                . "<div id=':32' class='a3s aiL '>"
+                . "<u>" . "</u>" . "<div>"
+                . "<div style='width:800px;text-align:center;margin:0 auto'>"
+                . "<table align='center' width='800' height='1000' cellpadding='0' cellspacing='0' border='0' style='background:#A77979'>"
+                . "<tbody>"
+                . "<tr>"
+                . "<td align='center' valign='top' style='background:url(https://wallpapercave.com/uwp/uwp2052576.jpeg)'>"
+                . "<table width='576' cellpadding='0' cellspacing='0' border='0'>"
+                . "<tbody>"
+                . "<tr>"
+                . "<td height='250'>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td align='left' valign='top' style='color:#fff'>"
+                . "<font color='#e35b5b' style='font-size:26px'>"
+                . "<strong>"
+                . "Gửi khách hàng:"
+                . "<br>"
+                . "Đây đây là mật khẩu của bạn, vui lòng nhập vào:"
+                . "</strong>"
+                . "</font>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='40' valign='top'>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td align='center' height='54' style='background:#202121;letter-spacing:15px;color:#ffffff'>"
+                . "<font size='6' color='#FFFFFF'>"
+                // code here
+                . $ps
+                . "</font>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='40' valign='top'>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td valign='top' style='color:#e35b5b'>"
+                . "<font size='4' color='#e35b5b'>"
+                . "Mọi thắc mắc vui lòng gửi email "
+                . "<a href='mailto:longan04111@gmail.com ' target='_blank'>"
+                . "longan04111@gmail.com"
+                . "</a>"
+                . "để biết thêm thông tin."
+                . "Nếu bạn không có thắc mắc nào, vui lòng đừng gửi thư rác!"
+                . "</font>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='40' valign='top'>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='60' valign='top' style='color:#e35b5b'>"
+                . "<font size='4' color='#e35b5b'>Một ngày tốt lành！</font>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='50' valign='top' style='color:#e35b5b'>"
+                . "<font size='5' color='#e35b5b'><strong>TN<strong></font>"
+                . "</td>"
+                . "</tr>"
+                . "<tr>"
+                . "<td height='100%'>"
+                . "</td>"
+                . "</tr>"
+                . "</tbody>"
+                . "</table>"
+                . "</td>"
+                . "</tr>"
+                . "</tbody>"
+                . "</table>"
+                . "</div>"
+                . "</div>"
+                . "</div>"
+                . "<div class='yj6qo'></div>"
+                . "</div>"; //body
             $mail->isHTML(true);
-           
+
             //Send the message, check for errors
-            if ( !$mail->send()) {
-               // $_SESSION['error_message'] = "123";
+            if (!$mail->send()) {
+                // $_SESSION['error_message'] = "123";
             } else {
                 // $_SESSION['error_message'] = "Kiểm tra lại thông tin đăng ký hoặc Email đã tồn tại trong hệ thống.";
             }
-          
         } catch (Exception $e) {
-          
+
             echo "Error encountered: " . $mail->ErrorInfo;
         }
     }
@@ -231,10 +235,10 @@ class userController
             $newu->SetFirstName($result_findemail['firstname']);
             $newu->SetLastName($result_findemail['lastname']);
             $this->userService->updateUserByEmail($newu);
-          
+
             $url = "/MVC/controller/userController.php";
             header("Location: " . $url);
-        }else {
+        } else {
             $url = "/MVC/controller/productController.php";
             header("Location: " . $url);
             echo '<script>alert("Không tồn tại Email hoặc sai Email!");</script>';
@@ -243,23 +247,23 @@ class userController
     //GET BILL USER BUY
     public function indexUser()
     {
-      $getbill = $this->billService->getBillEmaill($_SESSION['accountuser']['email']);
-    //   foreach ($getbill as $document) {
-    //     echo $id = $document['idbill'];
-    //  }
-       include '../views/infor_user.php';
+        $getbill = $this->billService->getBillEmaill($_SESSION['accountuser']['email']);
+        //   foreach ($getbill as $document) {
+        //     echo $id = $document['idbill'];
+        //  }
+        include '../views/infor_user.php';
     }
     //INFOR BILL
     public function billInfor()
     {
         $id = $_GET['id'];
-       
+
         if (empty($_SESSION['inforbill']) || !isset($_SESSION['inforbill'])) {
             $_SESSION['inforbill'] = array();
-        }else unset( $_SESSION['inforbill']);
+        } else unset($_SESSION['inforbill']);
         $getlistdetailbill = $this->billService->getBillDetail($id);
         $getinforbill = $this->billService->getBill($id);
-        
+
         foreach ($getlistdetailbill as $document) {
             $new_item = array(
 
@@ -268,12 +272,10 @@ class userController
                 'price' => $document['price'],
                 'image' => $this->productService->findOneImageIdProduct($document['idproduct']),
                 'quantity' => $document['quantity']
-             
-              
+
+
             );   //echo $document['idproduct'];
             $_SESSION['inforbill'][] = $new_item;
-
-           
         }
         include '../views/bill_user.php';
     }

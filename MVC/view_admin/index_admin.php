@@ -25,9 +25,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3><?php 
-              echo $countbilltoday;
-              ?><!-- <sup style="font-size: 20px">
+              <h3><?php
+                  echo $countbilltoday;
+                  ?><!-- <sup style="font-size: 20px">
 										đơn</sup> -->
               </h3>
 
@@ -45,7 +45,7 @@
           <div class="small-box bg-warning">
             <div class="inner">
               <h3>
-                <?php 
+                <?php
                 echo $countbillwait;
                 ?><!-- <sup style="font-size: 20px">
 										tài khoản</sup> -->
@@ -64,9 +64,9 @@
           <div class="small-box bg-success">
             <div class="inner">
               <h3>
-               <?php
-               echo $countstock;
-               ?><!-- <sup style="font-size: 20px"> Sản phẩm</sup> -->
+                <?php
+                echo $countstock;
+                ?><!-- <sup style="font-size: 20px"> Sản phẩm</sup> -->
               </h3>
 
               <p>Số lượng sản phẩm còn dưới 10 cái</p>
@@ -78,22 +78,22 @@
           </div>
         </div>
         <!-- ./col -->
-      
+
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>${orderCountFirstWeekEndWeek_count}<!-- <sup
+              <h3><?php echo number_format($sumbill, 0, ',', '.') . " VND" ?><!-- <sup
 										style="font-size: 20px"> đơn</sup> -->
               </h3>
 
-              <p>Số hóa đơn đã được đặt trong tuần</p>
+              <p>Tổng số doanh thu trong ngày</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -132,7 +132,7 @@
           <!-- Calendar -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Striped Full Width Table</h3>
+              <h3 class="card-title">Đơn hàng chờ xử lý</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
@@ -140,52 +140,27 @@
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
-                    <th>Task</th>
-                    <th>Progress</th>
-                    <th style="width: 40px">Label</th>
+                    <th>Email</th>
+                    <th>Số tiền</th>
+                    <th style="width: 40px"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1.</td>
-                    <td>Update software</td>
+                  <?php
+                  foreach ($get5bill as $p) {
+                    echo ' 
+                    <tr>
+                    <td>'.$p['idbill'].'</td>
+                    <td>'.$p['emailcustomer'].'</td>
                     <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                      </div>
+                     '.number_format($p['totalbill'], 0, ',', '.') . " VND".'
                     </td>
-                    <td><span class="badge bg-danger">55%</span></td>
-                  </tr>
-                  <tr>
-                    <td>2.</td>
-                    <td>Clean database</td>
-                    <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar bg-warning" style="width: 70%"></div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-warning">70%</span></td>
-                  </tr>
-                  <tr>
-                    <td>3.</td>
-                    <td>Cron job running</td>
-                    <td>
-                      <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar bg-primary" style="width: 30%"></div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-primary">30%</span></td>
-                  </tr>
-                  <tr>
-                    <td>4.</td>
-                    <td>Fix and squish bugs</td>
-                    <td>
-                      <div class="progress progress-xs progress-striped active">
-                        <div class="progress-bar bg-success" style="width: 90%"></div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-success">90%</span></td>
-                  </tr>
+                    <td>       <a style="margin-left:5px;" id=flowerid href="/MVC/controller/adminController.php?controller=BillInfor&id=' . $p['idbill'] . '" class="btn btn-outline-info">i</a></td>
+                  </tr>';
+                  }
+                  ?>
+
+
                 </tbody>
               </table>
             </div>
@@ -199,17 +174,17 @@
 
 <!-- /.content-wrapper -->
 <?php include 'footer_admin.php'; ?>
-<?php 
+<?php
 echo '<script>
 var donutChartCanvas = $("#donutChart").get(0).getContext("2d")
 
 var donutData = {
-  labels: ["'.$_SESSION['topseller0'].'", "'.$_SESSION['topseller1'].'",
-    "'.$_SESSION['topseller2'].'", "'.$_SESSION['topseller3'].'", "'.$_SESSION['topseller4'].'"
+  labels: ["' . $_SESSION['topseller0'] . '", "' . $_SESSION['topseller1'] . '",
+    "' . $_SESSION['topseller2'] . '", "' . $_SESSION['topseller3'] . '", "' . $_SESSION['topseller4'] . '"
   ],
   datasets: [{
-    data: ['.$_SESSION['quantityseller0'].', '.$_SESSION['quantityseller1'].', '.$_SESSION['quantityseller2'].', 
-    '.$_SESSION['quantityseller3'].', '.$_SESSION['quantityseller4'].'],
+    data: [' . $_SESSION['quantityseller0'] . ', ' . $_SESSION['quantityseller1'] . ', ' . $_SESSION['quantityseller2'] . ', 
+    ' . $_SESSION['quantityseller3'] . ', ' . $_SESSION['quantityseller4'] . '],
     backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#00c0ef", "#3c8dbc", "#d2d6de"],
   }]
 }
