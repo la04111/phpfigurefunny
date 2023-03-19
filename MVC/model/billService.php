@@ -155,6 +155,18 @@ class billService
 
         return $result;
     }
+    public function sumBilltoday()
+    {
+        $current_date = date("d/m/Y");
+        $temp = $this->dbcollectionbill->find(["datebuy" => ['$regex' => $current_date, '$options' => 'i']]);
+
+        $count = 0;
+
+        foreach ($temp as $document) {
+            $count+=(float)$document['totalbill'];
+        }
+        return $count;
+    }
     // bill search
     public function searchBillwithIDorEmail($email)
     {
@@ -189,5 +201,14 @@ class billService
             ['sort' => ['idbill' => -1]]
         );
         return $temp;
+    }
+    public function getBilllimit5()
+    {
+        $result = $this->dbcollectionbill->find(
+            ["status" => "Chờ xử lý"],
+            ['sort' => ['idbill' => -1], 'limit' => 5]
+        );
+
+        return $result;
     }
 }
