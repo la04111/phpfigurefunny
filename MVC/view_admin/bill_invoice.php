@@ -53,10 +53,10 @@ include 'header_admin.php';
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
                             <b>Hóa đơn #<?php echo $_GET['id'] ?></b><br>
-                           
+
                             <!-- <b>Mã hóa đơn: </b> <?php echo $_GET['id'] ?><br> -->
                             <b>Ngày đặt hàng: </b> <?php echo $inforbill['datebuy'] ?><br>
-                        
+
                             <b>Tổng tiền: </b><?php echo number_format($inforbill["totalbill"], 0, ',', '.') . " VND"; ?><br>
                             <b>Trạng thái: </b><?php echo $inforbill['status'] ?>
                             <!-- <b>Account:</b> 968-34567 -->
@@ -88,9 +88,9 @@ include 'header_admin.php';
                                         $callproductSer = new productService();
                                         echo ' <td><image style=" height: 12vw;width: 30vh;" src="' . $callproductSer->findOneImageId($i['idproduct']) . '"></image></td>';
 
-                                        echo ' <td>' . $i['quantity']. '</td>
-                                                <td>'.number_format($i["price"], 0, ',', '.') . " VND".'</td>
-                                                <td>'.number_format($i["price"]*$i['quantity'], 0, ',', '.') . " VND".'</td>
+                                        echo ' <td>' . $i['quantity'] . '</td>
+                                                <td>' . number_format($i["price"], 0, ',', '.') . " VND" . '</td>
+                                                <td>' . number_format($i["price"] * $i['quantity'], 0, ',', '.') . " VND" . '</td>
                                                 </tr>';
                                     }
                                     ?>
@@ -126,7 +126,7 @@ include 'header_admin.php';
                                         <th style="width:50%">Tổng tiền:</th>
                                         <td><?php echo number_format($inforbill["totalbill"], 0, ',', '.') . " VND"; ?></td>
                                     </tr>
-                                    
+
                                 </table>
                             </div>
                         </div>
@@ -137,14 +137,25 @@ include 'header_admin.php';
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-12">
-
-                            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Xác nhận đơn hàng
-                            </button>
-                            <a href="/cancel_order.php?id=123">
-                            <button type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
-                                <i class="fas fa-destroy"></i> Hủy đơn hàng
-                            </button>
-                            </a>
+                            <?php
+                            if ($inforbill['status'] == 'Chờ xử lý') {
+                                echo ' <a href="/MVC/controller/adminController.php?controller=acceptBill&id=' . $_GET['id'] . '">
+                                  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Xác nhận đơn hàng
+                                </button></a>';
+                                echo ' <a href="/MVC/controller/adminController.php?controller=denyBill&id=' . $_GET['id'] . '">
+                                <button type="button" class="btn btn-warning float-right" style="margin-right: 5px;">
+                                    <i class="fas fa-destroy"></i> Hủy đơn hàng
+                                </button>
+                                </a>';
+                            }
+                            else {
+                                echo ' <a href="/MVC/controller/adminController.php?controller=billindex">
+                                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                    <i class="fas fa-infor"></i> Trở về
+                                </button>
+                                </a>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

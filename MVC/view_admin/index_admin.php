@@ -36,7 +36,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/MVC/controller/adminController.php?controller=billindex" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -56,7 +56,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="${pageContext.request.contextPath }/admin/customer" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/MVC/controller/adminController.php?controller=billwait" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -74,7 +74,7 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/MVC/controller/adminController.php?controller=indexProductGET" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

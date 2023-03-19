@@ -107,6 +107,7 @@ class billService
             ]]
         );
     }
+    
     //ADMIN 
     public function countBilltoday()
     {
@@ -165,6 +166,21 @@ class billService
         // }
         $temp = $this->dbcollectionbill->find(
             [
+                '$or' => [
+                    ["emailcustomer" => ['$regex' => $email, '$options' => 'i']],
+                    ["idbill" => (int)$email]
+                ]
+            ],
+            ['sort' => ['idbill' => -1]]
+        );
+        return $temp;
+    }
+    public function searchBillwithIDorEmailWait($email)
+    {
+       
+        $temp = $this->dbcollectionbill->find(
+            [
+                'status' => 'Chờ xử lý', //filter for status field
                 '$or' => [
                     ["emailcustomer" => ['$regex' => $email, '$options' => 'i']],
                     ["idbill" => (int)$email]
