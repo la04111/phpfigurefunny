@@ -127,16 +127,16 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Layout Options
+               Quản lý hóa đơn
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="/MVC/controller/adminController.php?controller=billindex" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+                  <p>Danh sách hóa đơn</p>
                 </a>
               </li>
               <li class="nav-item">

@@ -21,19 +21,18 @@ class adminController
         $top5 = $this->billService->bestsellertop5();
         $idtemp = 0;
         foreach ($top5 as $row) {
-            $_SESSION['topseller'.$idtemp] = $this->productService->findOneId($row['_id'])['ProductName'];
-            $_SESSION['quantityseller'.$idtemp] = $row['quantity'];
+            $_SESSION['topseller' . $idtemp] = $this->productService->findOneId($row['_id'])['ProductName'];
+            $_SESSION['quantityseller' . $idtemp] = $row['quantity'];
             $idtemp++;
         }
-       
-       for($id =$idtemp ; $id < 5;$id++){
-        //echo $id;
-        $_SESSION['topseller'.$id] = "";
-        $_SESSION['quantityseller'.$id] = 0;
 
-       }
+        for ($id = $idtemp; $id < 5; $id++) {
+            //echo $id;
+            $_SESSION['topseller' . $id] = "";
+            $_SESSION['quantityseller' . $id] = 0;
+        }
 
- 
+
         include '../view_admin/index_admin.php';
     }
     /////////////////////////////////////////
@@ -135,6 +134,46 @@ class adminController
         include '../view_admin/product_index.php';
     }
     /////////////////////////////////////////
+    // Bill
+    public function BillIndex()
+    {
+
+        if (!isset($_POST['searchname'])) {
+            $search = "";
+        } else
+            $search = $_POST['searchname'];
+        $result = $this->billService->searchBillwithIDorEmail($search);
+
+        include '../view_admin/bill_index.php';
+    }
+
+    // Bill Infor 
+    public function BillInfor()
+    {
+        $inforbill = $this->billService->getBill($_GET['id']);
+        $inforbilldetail = $this->billService->getBillDetail($_GET['id']);
+        // foreach ($inforbilldetail as $i) {
+        //     echo $i['idproduct'];
+        // }
+        include '../view_admin/bill_invoice.php';
+    }
+    // Bill not accept
+    public function denyBill()
+    {
+        $inforbill = $this->billService->getBill($_GET['id']);
+        $bill = new Bill();
+        $bill->SetIDBill($inforbill['idbill']);
+        $bill->SetNote($inforbill['note']);
+        $bill->SetDateBuy($inforbill['datebuy']);
+        $bill->SetAddressdelivery($inforbill['addressdelivery']);
+        $bill->SetEmailcustomer($inforbill['emailcustomer']);
+        $bill->SetPhonenum($inforbill['phonenum']);
+        $bill->SetTotal($inforbill['totalbill']);
+        $bill->SetStatus('Huỷ');
+        $this->billService->updateBill($bill);
+        $url = "/MVC/controller/adminController.php?controller=billindex";
+            header("Location: " . $url);
+    }
 }
 $adminc = new adminController();
 
@@ -193,5 +232,11 @@ if (isset($_GET['controller'])) {
             $result = $adminc->productService->findOneId($_POST('ProductID'));
             include '../view_admin/product_update.php';
         }
+    }
+    if ($controller == "billindex") {
+        $adminc->BillIndex();
+    }
+    if ($controller == "BillInfor") {
+        $adminc->BillInfor();
     }
 } else   $adminc->LoadIndex();

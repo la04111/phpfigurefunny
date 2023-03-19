@@ -90,6 +90,23 @@ class billService
             return false;
         }
     }
+    //UPDATE BILL
+    public function updateBill(Bill $b)
+    {
+        $this->dbcollectionbill->updateOne(
+            ['idbill' => (int)$b->GetIDBill()],
+            ['$set' => [
+                'note' => $b->GetNote(),
+                'datebuy' => (string)$b->GetDateBuy(),
+                'addressdelivery' => (string)$b->GetAddressdelivery(),
+                'emailcustomer' => $b->GetEmailcustomer(),
+                'phonenum' =>  $b->GetPhonenum(),
+                'totalbill' => (float)$b->GetTotal(),
+                'status' => $b->GetStatus()
+            
+            ]]
+        );
+    }
     //ADMIN 
     public function countBilltoday()
     {
@@ -136,5 +153,25 @@ class billService
         ]);
 
         return $result;
+    }
+    // bill search
+    public function searchBillwithIDorEmail($email)
+    {
+        // if (!isset($email)) {
+        //     $email = "";
+        // }
+        // if (!isset($idbill)) {
+        //     $idbill = "";
+        // }
+        $temp = $this->dbcollectionbill->find(
+            [
+                '$or' => [
+                    ["emailcustomer" => ['$regex' => $email, '$options' => 'i']],
+                    ["idbill" => (int)$email]
+                ]
+            ],
+            ['sort' => ['idbill' => -1]]
+        );
+        return $temp;
     }
 }
