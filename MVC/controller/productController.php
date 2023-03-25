@@ -773,7 +773,7 @@ class productController
     public function SearchProduct()
     {
         $searchcontent = $_GET['searchproduct'];
-        $limit = 10;
+        $limit = 8;
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         $start = ($page - 1) * $limit;
         $counts = $this->productService->findName($searchcontent);
@@ -802,7 +802,7 @@ class productController
         $searchcontent = "Genshin Impact";
        } else  $searchcontent = "Khác";
      
-        $limit = 10;
+        $limit = 8;
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         $start = ($page - 1) * $limit;
         $counts = $this->productService->countSeri($searchcontent);

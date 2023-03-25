@@ -93,24 +93,26 @@
                             </div> <!-- End results -->
                             <div class="row pagination-theme clearfix text-center">
                                 <div id="pagination" class="clearfix">
-                                    <?php
-                                    for ($i = 1; $i <= $total_pages; $i++) {
-                                        echo ' <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <?php
+                                        for ($i = 1; $i <= $total_pages; $i++) {
+                                            echo '
                                    
-                                        <a class="page-node" href="/MVC/controller/productController.php?searchproduct='.$searchcontent.'&page='.$i.'">'.$i.'</a>
+                                        <a class="page-node" href="/MVC/controller/productController.php?searchproduct=' . $searchcontent . '&page=' . $i . '">' . $i . '</a>
                                     
-                                    </div>';
-                                      //  echo "<a href='?page=" . $i . "&search=" . $searchcontent . "'>" . $i . "</a> ";
-                                    }
-                                    // <a class="page-node" href="/search?type=product&amp;q=a&amp;page=3">3</a>
-                                    // <span class="page-node ">…</span>
-                                    // <a class="page-node" href="/search?type=product&amp;q=a&amp;page=9">9</a>
-                                    // <a class="next" href="/search?type=product&amp;q=a&amp;page=2">
-                                    //     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31 10" style="enable-background:new 0 0 31 10; width: 31px; height: 10px;" xml:space="preserve">
-                                    //         <polygon points="31,5 25,0 25,4 0,4 0,6 25,6 25,10 "></polygon>
-                                    //     </svg> </a>
-                                    ?>
+                                  ';
+                                            //  echo "<a href='?page=" . $i . "&search=" . $searchcontent . "'>" . $i . "</a> ";
+                                        }
 
+                                        // <a class="page-node" href="/search?type=product&amp;q=a&amp;page=3">3</a>
+                                        // <span class="page-node ">…</span>
+                                        // <a class="page-node" href="/search?type=product&amp;q=a&amp;page=9">9</a>
+                                        // <a class="next" href="/search?type=product&amp;q=a&amp;page=2">
+                                        //     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31 10" style="enable-background:new 0 0 31 10; width: 31px; height: 10px;" xml:space="preserve">
+                                        //         <polygon points="31,5 25,0 25,4 0,4 0,6 25,6 25,10 "></polygon>
+                                        //     </svg> </a>
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
