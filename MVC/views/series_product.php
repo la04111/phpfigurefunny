@@ -196,17 +196,17 @@ include 'header.php';
                                 </div>
                                 <div class="sortpagibar pagi clearfix text-center">
                                     <div id="pagination" class="clearfix">
-
-                                        <?php
-                                        for ($i = 1; $i <= $total_pages; $i++) {
-                                            echo ' <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <?php
+                                            for ($i = 1; $i <= $total_pages; $i++) {
+                                                echo '
                                    
                                         <a class="page-node" href="/MVC/controller/productController.php?controller=SeriGET&seri=' . $getseri . '&page=' . $i . '">' . $i . '</a>
                                     
-                                    </div>';
-                                        } ?>
+                                   ';
+                                            } ?>
 
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
